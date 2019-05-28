@@ -1,12 +1,36 @@
-<div class="container"
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+<div class="container">
+  <div class="banner parallax">
+    <div class="title-logo">
+      <%= image_tag "logo-bg.jpg", alt: "Logo", id:"title-logo" %>
+    </div>
+  </div>
 
+  <div
+    id="map"
+    style="width: 70%;
+    height: 500px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
 
-
-
-
+  <div class="icons">
+    <div class="round-button">
+    </div>
+    <div class="round-button">
+    </div>
+    <div class="round-button">
+    </div>
+    <div class="round-button">
+    </div>
+    </div>
+    <div class="icons">
+    <div class="round-button">
+    </div>
+    <div class="round-button">
+    </div>
+    <div class="round-button">
+    </div>
+    <div class="round-button">
+    </div>
+  </div>
+</div>

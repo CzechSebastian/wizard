@@ -4,3 +4,12 @@
   right: 16px;
   z-index: 1000;
 }
+
+.alert {
+  animation: cssAnimation 0s 2s forwards;
+  visibility: visible;
+}
+
+@keyframes cssAnimation {
+  to   { visibility: hidden; }
+}
