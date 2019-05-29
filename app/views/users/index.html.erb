@@ -1,36 +1,26 @@
   <div class="top-container parallax">
     <div class="banner"></div>
-      <%= render 'shared/searchbar' %>
+    <%= render 'shared/searchbar' %>
   </div>
-<div class="container">
+  <div class="container">
 
-  <div
+    <div
     id="map"
     style="width: 100%;
     height: 500px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
-
-  <div class="icons">
-    <div class="round-button restaurant">
-      <p>restaurant</p>
+    ></div>
+    <div class="icons">
+      <%= link_to "restaurant", maps_path, remote: true, class:"round-button clickable" %>
+      <%= link_to "school", maps_path, remote: true, class:"round-button clickable" %>
+      <%= link_to "park", maps_path, remote: true, class:"round-button clickable" %>
+      <%= link_to "car", maps_path, remote: true, class:"round-button clickable" %>
     </div>
-    <div class="round-button">
-    </div>
-    <div class="round-button">
-    </div>
-    <div class="round-button">
-    </div>
-  </div>
-  <div class="icons">
-    <div class="round-button">
-    </div>
-    <div class="round-button">
-    </div>
-    <div class="round-button">
-    </div>
-    <div class="round-button">
+    <div class="icons">
+      <%= link_to "bike", maps_path, remote: true, class:"round-button clickable" %>
+      <%= link_to "dog", maps_path, remote: true, class:"round-button clickable" %>
+      <%= link_to "quiet", maps_path, remote: true, class:"round-button clickable" %>
+      <%= link_to "family", maps_path, remote: true, class:"round-button clickable" %>
     </div>
   </div>
-</div>

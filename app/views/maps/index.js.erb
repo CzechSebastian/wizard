@@ -1,0 +1,46 @@
+const toggleActiveClass = (event) => {
+  event.currentTarget.classList.toggle('active');
+};
+
+const toggleActiveOnClick = (box) => {
+  box.addEventListener('click', toggleActiveClass);
+};
+
+const icons = document.querySelectorAll(".clickable");
+
+icons.forEach((icon) => {
+  toggleActiveOnClick(icon);
+});
+
+
+// // toggle button for have the right name in query
+  const button = document.querySelectorAll(".round-button");
+  button.addEventListener('toggle', (event) => {
+  const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=45.522,-73.607&radius=5000&type=restaurant&key=AIzaSyCgYHWe811R-jDIKjTq0isYrQuYgSKpxF0`;
+  console.log("clicked")
+
+  fetchDistrict(url)
+})
+
+// // toogle button for display the best score district
+// const district = document.getElementById('btn-district');
+// district.addEventListener("click", (event) => {
+//   console.log(event)
+//   const fetchDistrict = (url) => {
+//     fetch(url)
+//     .then(response => response.json())
+//     .then((data) => {
+//       console.log(data);
+//       const name = districts_attributes.name;
+//       const score = districts_attributes.score;
+//       const coordinates = districts_attributes.coordinates;
+//       district.innerHTML = `
+//       <h3>you're in ${name}</h3>
+//       <h4>the score is ${score}</h4>
+//       <p>coordinates${coordinates}</p>
+//       `;
+//     });
+//   };
+// }
+
+
