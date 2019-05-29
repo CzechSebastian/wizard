@@ -25,8 +25,12 @@ districts["features"].each do |district|
 	middle_lat = (location_latitude.min + location_latitude.max) / 2
 
 	location = [middle_long, middle_lat] 
+	# if district["center"] != nil
+		District.create!(name:name, coordinates:coordinates, location:location)
+	# else
+	# 	District.create!(name:name, coordinates:coordinates, location:district["center"])
+	# end
 
-	District.create!(name:name, coordinates:coordinates, location:location)
 end
 
 #Ben code
@@ -57,7 +61,6 @@ def set_restaurants_score(district)
   restaurants.flatten.count
 
 	 if restaurants.flatten.count != 0
-	 	puts "hello from somewhere"
 	  valid_restaurants = restaurants.flatten.select do |restaurant|
 	    !restaurant["rating"].nil? && district.contains_point?([(restaurant["geometry"]["location"]["lng"]).to_f,(restaurant["geometry"]["location"]["lat"]).to_f])
   	end
