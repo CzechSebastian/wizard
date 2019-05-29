@@ -1,6 +1,6 @@
 <div class="home-input">
     <div class="home-form">
-      <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+      <%= form_tag(pages_path, :method => "get", id: "search-form") do %>
       <%= text_field_tag :search, params[:search], placeholder: "add an address to your search" %>
       <%= submit_tag "Add" %>
       <% end %>

@@ -11,16 +11,43 @@
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
-    <div class="icons">
-      <%= link_to "restaurant", maps_path, remote: true, class:"round-button clickable" %>
-      <%= link_to "school", maps_path, remote: true, class:"round-button clickable" %>
-      <%= link_to "park", maps_path, remote: true, class:"round-button clickable" %>
-      <%= link_to "car", maps_path, remote: true, class:"round-button clickable" %>
-    </div>
-    <div class="icons">
-      <%= link_to "bike", maps_path, remote: true, class:"round-button clickable" %>
-      <%= link_to "dog", maps_path, remote: true, class:"round-button clickable" %>
-      <%= link_to "quiet", maps_path, remote: true, class:"round-button clickable" %>
-      <%= link_to "family", maps_path, remote: true, class:"round-button clickable" %>
-    </div>
+    <%= form_tag pages_path, method: :get, remote: true do %>
+      <input type="hidden" name="criteria[]" value="">
+      <div class="category-choices">
+        <input type="checkbox" name="criteria[]" class="hidden" value="restaurant" id="post_category_ids_icon_restaurant">
+        <label class="category-choice" for="post_category_ids_icon_restaurant">
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="school" id="post_category_ids_icon_school">
+        <label class="category-choice" for="post_category_ids_icon_school">
+          <i class="fa fa-check"></i>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="park" id="post_category_ids_icon_park">
+        <label class="category-choice" for="post_category_ids_icon_park">
+          <%= inline_svg "leaf.svg", class: 'logo-icon' %>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="bike" id="post_category_ids_icon_bike">
+        <label class="category-choice" for="post_category_ids_icon_bike">
+          <i class="fa fa-check"></i>
+        </label>
+      </div>
+      <div class="category-choices">
+        <input type="checkbox" name="criteria[]" class="hidden" value="dog" id="post_category_ids_icon_dog">
+        <label class="category-choice" for="post_category_ids_icon_dog">
+          <i class="fa fa-check"></i>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="car" id="post_category_ids_icon_car">
+        <label class="category-choice" for="post_category_ids_icon_car">
+          <i class="fa fa-check"></i>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="family" id="post_category_ids_icon_family">
+        <label class="category-choice" for="post_category_ids_icon_family">
+          <i class="fa fa-check"></i>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="quiet" id="post_category_ids_icon_quiet">
+        <label class="category-choice" for="post_category_ids_icon_quiet">
+          <i class="fa fa-check"></i>
+        </label>
+      </div>
+      <%= button_tag :submit, class: "hidden", id: "submit-criteria" %>
+    <% end %>
   </div>

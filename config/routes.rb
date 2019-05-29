@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:index, :show, :new ]
+  resources :pages, only: [:index]
   root to: 'users#index'
-  resources :users, only: [:index, :show, :new, :create]
   resources :maps, only: [:index]
 end
