@@ -25,15 +25,19 @@ districts["features"].each do |district|
 	middle_lat = (location_latitude.min + location_latitude.max) / 2
 
 	location = [middle_long, middle_lat] 
+	# if district["center"] != nil
+		District.create!(name:name, coordinates:coordinates, location:location)
+	# else
+	# 	District.create!(name:name, coordinates:coordinates, location:district["center"])
+	# end
 
-	District.create!(name:name, coordinates:coordinates, location:location)
 end
 
 #Ben code
 
 def set_restaurants_score(district)
   arr_location = district.location
-  url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{arr_location[1]},#{arr_location[0]}&radius=1000&type=restaurants&key=#{ENV["GOOGLE_API_KEY"]}"
+  url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{arr_location[1]},#{arr_location[0]}&radius=1000&type=restaurant&key=#{ENV["GOOGLE_API_KEY"]}"
   response = RestClient.get url
   results = JSON.parse(response)
 
@@ -56,24 +60,35 @@ def set_restaurants_score(district)
 
   restaurants.flatten.count
 
-  valid_restaurants = restaurants.flatten.select do |restaurant|
-    !restaurant["rating"].nil? && district.contains_point?([(restaurant["geometry"]["location"]["lng"]).to_f,(restaurant["geometry"]["location"]["lat"]).to_f])
-  end
-  number = valid_restaurants.count
-  puts number
+	 if restaurants.flatten.count != 0
+	  valid_restaurants = restaurants.flatten.select do |restaurant|
+	    !restaurant["rating"].nil? && district.contains_point?([(restaurant["geometry"]["location"]["lng"]).to_f,(restaurant["geometry"]["location"]["lat"]).to_f])
+  	end
+    district.update(raw_restaurant: valid_restaurants)
 
-  sum = 0
-  valid_restaurants.each do |restaurant|
-    sum += restaurant["rating"]
-  end
-  average = sum/number
-  puts average
-  district.update(restaurant_score: average)
+	  number = valid_restaurants.count
+	  puts district.name
+	  puts number
 
+	  sum = 0
+	  valid_restaurants.each do |restaurant|
+	    sum += restaurant["rating"]
+	  end
+
+	  average = sum/number
+	  puts average
+	  district.update(restaurant_score: average)
+
+	else
+		puts "hello again"
+		average = 0
+		district.update(restaurant_score: average)
+  end
 end
+
   District.all.each do |district|
-  set_restaurants_score(district)
- end
+  	set_restaurants_score(district)
+ 	end
 
 
 
