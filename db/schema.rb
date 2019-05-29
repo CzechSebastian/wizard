@@ -10,18 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_141714) do
+ActiveRecord::Schema.define(version: 2019_05_29_181732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "districts", force: :cascade do |t|
     t.string "name"
-    t.float "score"
     t.jsonb "coordinates"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "location"
+    t.float "restaurant_score"
+    t.jsonb "raw_restaurant"
+    t.float "parc_score"
+    t.jsonb "parc_raw"
+    t.float "school_score"
+    t.jsonb "school_raw"
+    t.float "quiet_score"
+    t.jsonb "quiet_raw"
   end
 
   create_table "users", force: :cascade do |t|

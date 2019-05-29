@@ -1,14 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "json"
 
 puts 'Cleaning database...'
 District.destroy_all
-
 puts 'Creating districts seed...'
 districts_attributes = [
   {
@@ -34,7 +27,33 @@ districts_attributes = [
     score:      0.9,
     coordinates:  [ [ -73.617819061561605, 45.527108743481556 ], [ -73.617826856979136, 45.527099826172432 ], [ -73.620257167827546, 45.524343788885133 ], [ -73.620863788293022, 45.523656504646176 ], [ -73.622137028145971, 45.524022320473534 ], [ -73.622248476470332, 45.523899901229775 ], [ -73.622757891867039, 45.523342030335151 ], [ -73.623010510296936, 45.523414292678304 ], [ -73.62318093258385, 45.52346405496597 ], [ -73.623497053490112, 45.523555866139141 ], [ -73.624005363781137, 45.523703533398404 ], [ -73.624330256969003, 45.523797942526265 ], [ -73.624538717336833, 45.523858460497983 ], [ -73.624907987725848, 45.523965508556209 ], [ -73.62558028534454, 45.524160415499132 ], [ -73.625863026099438, 45.5242425375979 ], [ -73.626443724674232, 45.524411082497281 ], [ -73.627783063970739, 45.52479989027384 ], [ -73.629161622180249, 45.525200067049333 ], [ -73.631586165133001, 45.52590374213063 ], [ -73.634680382342935, 45.526801772079111 ], [ -73.635001929560843, 45.526895074838571 ], [ -73.637789808833176, 45.527704109369481 ], [ -73.640326795803702, 45.528441660131193 ], [ -73.640911914175717, 45.528611745797917 ], [ -73.644003895884481, 45.529510515460707 ], [ -73.646137873914924, 45.530130733988173 ], [ -73.64715853927278, 45.530427389078532 ], [ -73.647819683087832, 45.530619119540823 ], [ -73.64853281913139, 45.530822837581326 ], [ -73.645786772033432, 45.535125317933776 ], [ -73.642867827563762, 45.534629637508864 ], [ -73.638226784953545, 45.533919907235422 ], [ -73.635517443184142, 45.533491279455724 ], [ -73.62433283180296, 45.531533344061543 ], [ -73.621535944510299, 45.531100070118647 ], [ -73.621200106097675, 45.53104049189394 ], [ -73.61988336102516, 45.530797371588648 ], [ -73.619386179373564, 45.530693950877549 ], [ -73.619248513817993, 45.530662507282642 ], [ -73.61909029355256, 45.530648813485975 ], [ -73.619072856969467, 45.530642982146382 ], [ -73.618602275547559, 45.530482565000341 ], [ -73.618440458152989, 45.530415058486646 ], [ -73.618331904945748, 45.530367024965983 ], [ -73.61801524283311, 45.530182147855982 ], [ -73.617896367281901, 45.530095877742724 ], [ -73.617685247450964, 45.529932398957655 ], [ -73.617440877018709, 45.529673291862942 ], [ -73.617269151571051, 45.529460365865411 ], [ -73.617163302190519, 45.529289128611659 ], [ -73.617128931056357, 45.529213480100054 ], [ -73.61702430493402, 45.528969707433752 ], [ -73.616977745655007, 45.528770601529843 ], [ -73.616952279965375, 45.528507849244718 ], [ -73.616957355766317, 45.528460327959692 ], [ -73.617041775365138, 45.527872049885076 ], [ -73.617092042108837, 45.527720720806784 ], [ -73.617092570462177, 45.527720900250408 ], [ -73.617235572314172, 45.52778356841624 ], [ -73.617240102103352, 45.527778344196349 ], [ -73.617819061561605, 45.527108743481556 ] ],
     location: [-73.623735, 45.527995]
-  },
+  }
 ]
-District.create!(districts_attributes)
-puts 'Finished!'
+# District.create!(districts_attributes)
+# puts 'Finished!'
+# def set_restaurants_score(district)
+#   # per = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=45.523652,-73.598590&radius=1000&type=restaurant&key=AIzaSyAuRCOo8bPI7cF93LZ8kT4u2SnR1SrNDys"
+#   arr_location = JSON.parse(district.location)
+#   url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{arr_location[1].to_f},#{arr_location[0].to_f}&radius=1000&type=restaurant&key=AIzaSyAuRCOo8bPI7cF93LZ8kT4u2SnR1SrNDys"
+#   response = RestClient.get url
+#   results = JSON.parse(response)
+#   last_page_token = results["next_page_token"]
+#   restaurants = []
+#   restaurants << results["results"]
+#   while last_page_token != nil
+#     sleep 2
+#     response = RestClient.get "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyAuRCOo8bPI7cF93LZ8kT4u2SnR1SrNDys&pagetoken=#{last_page_token}"
+#     results = JSON.parse(response)
+#     last_page_token = results["next_page_token"]
+#     restaurants << results["results"]
+#   end
+# binding.pry
+# puts restaurants.flatten.count
+#   valid_restaurants = restaurants.select { |restaurant| district.contains_point?([JSON.parse(restaurant["geometry"]["location"]["lat"]),JSON.parse(restaurant["geometry"]["location"]["lng"])])}
+#   number = valid_restaurants.count
+# puts number
+
+# end
+# set_restaurants_score(District.first)
+#   # json_string = JSON.pretty_generate(restaurants)
+
