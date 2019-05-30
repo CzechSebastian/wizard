@@ -24,7 +24,7 @@ districts["features"].each do |district|
 	middle_long = (location_longitude.min + location_longitude.max) / 2
 	middle_lat = (location_latitude.min + location_latitude.max) / 2
 
-	location = [middle_long, middle_lat] 
+	location = [middle_long, middle_lat]
 	# if district["center"] != nil
 		District.create!(name:name, coordinates:coordinates, location:location)
 	# else
@@ -33,7 +33,7 @@ districts["features"].each do |district|
 
 end
 
-#THIS IS THE CODE FOR RESTAURANT SCORE!
+# THIS IS THE CODE FOR RESTAURANT SCORE
 
 def set_restaurants_score(district)
   arr_location = district.location
@@ -57,7 +57,7 @@ def set_restaurants_score(district)
 
     restaurants << results["results"]
   end
-  
+
 	  puts district.name
 	  valid_restaurants = restaurants.flatten.select do |restaurant|
 	    !restaurant["rating"].nil? && district.contains_point?([(restaurant["geometry"]["location"]["lng"]).to_f,(restaurant["geometry"]["location"]["lat"]).to_f])
@@ -85,13 +85,182 @@ def set_restaurants_score(district)
   end
 end
 
- # TODO THIS IS THE CODE FOR SCHOOL SCORE
+ District.all.each do |district|
+  set_restaurants_score(district)
+ end
+
+"=============================================================================================================================================================================================================================="
+
+
+"=============================================================================================================================================================================================================================="
+
+ # THIS IS THE CODE FOR SCHOOL SCORE
+
+def set_schools_score(district)
+  arr_location = district.location
+  url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{arr_location[1]},#{arr_location[0]}&radius=1000&type=school&key=#{ENV["GOOGLE_API_KEY"]}"
+  response = RestClient.get url
+  results = JSON.parse(response)
+
+  last_page_token = results["next_page_token"]
+
+  schools = []
+
+  schools << results["results"]
+
+  while last_page_token != nil
+    sleep 2
+
+    response = RestClient.get "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=#{ENV["GOOGLE_API_KEY"]}&pagetoken=#{last_page_token}"
+    results = JSON.parse(response)
+
+    last_page_token = results["next_page_token"]
+
+    schools << results["results"]
+  end
+
+    valid_schools = schools.flatten.select do |school|
+      !school["rating"].nil? && district.contains_point?([(school["geometry"]["location"]["lng"]).to_f,(school["geometry"]["location"]["lat"]).to_f])
+    end
+   if valid_schools.length != 0
+    district.update(school_raw: valid_schools)
+
+    number = valid_schools.count
+    puts district.name
+    puts number
+
+    sum = 0
+    valid_schools.each do |school|
+      sum += school["rating"]
+    end
+
+    average = sum/number
+    puts average
+    district.update(school_score: average)
+
+  else
+    puts "This one has 0 places"
+    average = 0
+    district.update(school_score: average)
+  end
+end
+
+ District.all.each do |district|
+  set_schools_score(district)
+ end
+
+"=============================================================================================================================================================================================================================="
+
+
+"=============================================================================================================================================================================================================================="
+
+ # THIS IS THE CODE FOR SUBWAY SCORE
+
+
+def set_subways_score(district)
+  arr_location = district.location
+  url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{arr_location[1]},#{arr_location[0]}&radius=1500&type=subway_station&key=#{ENV["GOOGLE_API_KEY"]}"
+  response = RestClient.get url
+  results = JSON.parse(response)
+
+  last_page_token = results["next_page_token"]
+
+  subways = []
+
+  subways << results["results"]
+
+  while last_page_token != nil
+    sleep 2
+
+    response = RestClient.get "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=#{ENV["GOOGLE_API_KEY"]}&pagetoken=#{last_page_token}"
+    results = JSON.parse(response)
+
+    last_page_token = results["next_page_token"]
+
+    subways << results["results"]
+  end
+
+    valid_subways = subways.flatten.select do |subway|
+      district.contains_point?([(subway["geometry"]["location"]["lng"]).to_f,(subway["geometry"]["location"]["lat"]).to_f])
+    end
+
+    number = valid_subways.length
+
+    if valid_subways.length != 0
+      # puts district.name
+      # puts number
+      score = 1
+      district.update(subway_score: score)
+      district.update(subway_raw: valid_subways)
+    else
+      # puts 0
+      # puts district.name
+
+      score = 0
+      district.update(subway_score: score)
+      district.update(subway_raw: valid_subways)
+    end
+
+    puts district.name
+    puts district.subway_score
+
+
+end
+District.all.each do |district|
+  set_subways_score(district)
+end
+
+"=============================================================================================================================================================================================================================="
+
+
+"=============================================================================================================================================================================================================================="
+
+ # THIS IS THE CODE FOR SUPERMARKET SCORE
+
+
+# def set_supermarkets_score(district)
+#   arr_location = district.location
+#   url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{arr_location[1]},#{arr_location[0]}&radius=1500&type=supermarket&key=#{ENV["GOOGLE_API_KEY"]}"
+#   response = RestClient.get url
+#   results = JSON.parse(response)
+
+#   last_page_token = results["next_page_token"]
+
+#   supermarkets = []
+
+#   supermarkets << results["results"]
+
+#   while last_page_token != nil
+#     sleep 2
+
+#     response = RestClient.get "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=#{ENV["GOOGLE_API_KEY"]}&pagetoken=#{last_page_token}"
+#     results = JSON.parse(response)
+
+#     last_page_token = results["next_page_token"]
+
+#     supermarkets << results["results"]
+#   end
+
+#     valid_supermarkets = supermarkets.flatten.select do |supermarket|
+#       district.contains_point?([(supermarket["geometry"]["location"]["lng"]).to_f,(supermarket["geometry"]["location"]["lat"]).to_f])
+#     end
+
+#   valid_supermarkets.count
+
+#   districts.each do |district|
+#   sum += valid_supermarkets.length
+#   end
+
+
+#     # average_of_valid_supermarket = valid_supermarkets.count/District.all.count
+#     # average_of_valid_supermarket
 
 
 
-
-
-
+# end
+# District.all.each do |district|
+#   set_supermarkets_score(district)
+# end
 
 
 
