@@ -1,7 +1,9 @@
+inputBox = document.getElementById('coordinates-to-show')
+refreshMapButton = document.getElementById('refresh-map')
 
-// const icons = document.querySelectorAll(".category-choice");
-// icons.forEach((icon) => {
-//   button.addEventListener('click', () => {
-//     console.log("forEach worked");
-//   });
-// });
+coordinatesString = "<%= @districts.pluck(:coordinates).to_s %>"
+
+inputBox.value = coordinatesString
+
+refreshMapButton.click()
+
