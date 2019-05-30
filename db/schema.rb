@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_30_162000) do
+ActiveRecord::Schema.define(version: 2019_05_30_214037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_05_30_162000) do
     t.jsonb "location"
     t.float "subway_score"
     t.jsonb "subway_raw"
+    t.float "average"
   end
 
   create_table "users", force: :cascade do |t|
