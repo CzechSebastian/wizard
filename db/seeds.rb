@@ -33,7 +33,7 @@ districts["features"].each do |district|
 
 end
 
-#Ben code
+#THIS IS THE CODE FOR RESTAURANT SCORE!
 
 def set_restaurants_score(district)
   arr_location = district.location
@@ -57,13 +57,12 @@ def set_restaurants_score(district)
 
     restaurants << results["results"]
   end
-
-  restaurants.flatten.count
-
-	 if restaurants.flatten.count != 0
+  
+	  puts district.name
 	  valid_restaurants = restaurants.flatten.select do |restaurant|
 	    !restaurant["rating"].nil? && district.contains_point?([(restaurant["geometry"]["location"]["lng"]).to_f,(restaurant["geometry"]["location"]["lat"]).to_f])
   	end
+	 if valid_restaurants.length != 0
     district.update(raw_restaurant: valid_restaurants)
 
 	  number = valid_restaurants.count
@@ -80,15 +79,16 @@ def set_restaurants_score(district)
 	  district.update(restaurant_score: average)
 
 	else
-		puts "hello again"
+		puts "This one has 0 places"
 		average = 0
 		district.update(restaurant_score: average)
   end
 end
 
-  District.all.each do |district|
-  	set_restaurants_score(district)
- 	end
+ # TODO THIS IS THE CODE FOR SCHOOL SCORE
+
+
+
 
 
 
