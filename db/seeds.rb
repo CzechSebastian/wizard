@@ -85,6 +85,10 @@ def set_restaurants_score(district)
   end
 end
 
+ District.all.each do |district|
+  set_restaurants_score(district)
+ end
+
  # TODO THIS IS THE CODE FOR SCHOOL SCORE
 
 
