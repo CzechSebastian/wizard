@@ -91,10 +91,14 @@ const setMarkers = (category, markerObjects, map, mapElement) => {
   markerObjects.forEach((marker) => {
     marker.remove()
   });
+
   const markers = JSON.parse(mapElement.dataset[category]);
   if (markers !== null ) {
     markers.forEach((marker) => {
-      const newMarker = new mapboxgl.Marker()
+      var e = document.createElement('div');
+      e.innerHTML = '<i class="fas fa-map-marker-alt"></i>'
+      e.className = 'marker'
+      const newMarker = new mapboxgl.Marker(e)
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map);
       markerObjects.push(newMarker)
@@ -158,12 +162,12 @@ const initShowMap = () => {
       });
      });
 
-    map.addControl(new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      marker: {
-      },
-      mapboxgl: mapboxgl
-    }));
+    // map.addControl(new MapboxGeocoder({
+    //   accessToken: mapboxgl.accessToken,
+    //   marker: {
+    //   },
+    //   mapboxgl: mapboxgl
+    // }));
 
 
   }
