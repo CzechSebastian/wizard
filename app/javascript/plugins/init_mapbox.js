@@ -7,27 +7,29 @@ const initIndexMap = () => {
 
   if (mapElement) { // only build a map if there's a div#map to inject into
     const coordinatesForm = document.getElementById('coordinates-form')
-    const refreshMapButton = document.getElementById('refresh-map')
-    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+  const refreshMapButton = document.getElementById('refresh-map')
+  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
 
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10',
-      center: [-73.61, 45.551],
-      zoom: 9.5,
-      attributionControl: false
-    });
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v10',
+    center: [-73.61, 45.551],
+    zoom: 9.5,
+    attributionControl: false
+  });
 
-    map.addControl(new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      marker: {
-      },
-      mapboxgl: mapboxgl
-    }));
+  map.addControl(new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    marker: {
+    },
+    mapboxgl: mapboxgl
+  }));
 
 
-    refreshMapButton.addEventListener('click', function(){
-      const polygons = JSON.parse(inputBox.value);
+  refreshMapButton.addEventListener('click', function(){
+    const polygons = JSON.parse(inputBox.value.replace(/&quot;/g,'"'));
+
+      console.log(polygons)
 
       // Checking if there is a layer that starts with "montreal_"
       const districtLayerIsPresent = map.getStyle().layers.some((layer) => {
@@ -53,9 +55,12 @@ const initIndexMap = () => {
               'type': 'geojson',
               'data': {
                 'type': 'Feature',
+                'properties': {
+                  "name": polygon["name"]
+                },
                 'geometry': {
                   'type': 'Polygon',
-                  'coordinates': [polygon]
+                  'coordinates': [polygon["coordinates"]]
                 }
               }
             },
@@ -65,11 +70,18 @@ const initIndexMap = () => {
               'fill-opacity': 0.8,
             }
           })
+        map.on('click', `montreal_${index}`, function (e) {
+          console.log(e)
+          new mapboxgl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML('<a href="' + polygon['url'] + '">' + e.features[0].properties.name + '</a>')
+          .addTo(map);
         })
+        });
       }
     })
 
-  }
+}
 };
 
 // =========================show map=================================================================
