@@ -18,16 +18,23 @@
   text-align: center;
   transition: 0.4s;
   opacity: 0.8;
+  border: solid 8px (rgba(47, 64, 196, 0.00));
   svg {
-    fill: #A7A7A7
+    fill: white
+  } 
+
+  &:hover {
+    border: solid 8px (rgba(47, 64, 196, 1.00));
   }
+
   &.active {
     opacity:1;
-    color: black;
+    color: #2f40c4;
     svg {
-      fill: black;
+      fill: #2f40c4;
     }
   }
 }
+
 
 
