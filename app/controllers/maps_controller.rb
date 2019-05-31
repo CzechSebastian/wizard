@@ -6,7 +6,6 @@ class MapsController < ApplicationController
       district.average = score
       district
     end
-    # binding.pry
 
     @districts = averagedistrict.sort_by { |district| 1 / district.average }
     @districts = @districts.first(10)
