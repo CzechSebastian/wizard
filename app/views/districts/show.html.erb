@@ -1,15 +1,17 @@
-<h1>Explore the neighbourhood <%= @district.name %></h1>
+<div class="d-flex justify-content-center">
+	<h2>Explore the neighbourhood <strong><%= @district.name %></strong></h2>
+</div>
 
 
 <div class="d-flex justify-content-between btn-container">
 	<div class="d-flex flex-column justify-content-between mr-4">
-		<button type="button" id="restaurant-btn" class="btn-show-category">RESTAURANTS</button>
-		<button type="button" class="btn-show-category">BARS</button>
-		<button type="button" id="school-btn" class="btn-show-category">SCHOOLS</button>
-		<button type="button" id="park-btn" class="btn-show-category">PARKS</button>
-		<button type="button" id="subway-btn" class="btn-show-category">Subway stations</button>
-		<button type="button" class="btn-show-category">COFFEES</button>
-		<button type="button" class="btn-show-category">HOUSES FOR SELL</button>
+		<button type="button" id="restaurant-btn" class="btn-show-category"><p>RESTAURANTS</p></button>
+		<button type="button" class="btn-show-category"><p>BARS</p></button>
+		<button type="button" id="school-btn" class="btn-show-category"><p>SCHOOLS</p></button>
+		<button type="button" id="park-btn" class="btn-show-category"><p>PARKS</p></button>
+		<button type="button" id="subway-btn" class="btn-show-category"><p>METRO STATIONS</p></button>
+		<button type="button" class="btn-show-category"><p>COFFEES</p></button>
+		<button type="button" class="btn-show-category"><p>HOUSES FOR SELL</p></button>
 	</div>
 
 	<div 
@@ -33,4 +35,3 @@
 
 
 
-<%= link_to "Back to main page", pages_path, class:"btn btn-secondary btn-lg" %>
