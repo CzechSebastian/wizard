@@ -19,10 +19,10 @@ class DistrictsController < ApplicationController
 			end
 		end
 
-		if @district.parc_raw == nil
+		if @district.park_raw == nil
   		@school_coordinates = []
   	else
-  		@park_coordinates = @district.parc_raw.map do |park_hash|
+  		@park_coordinates = @district.park_raw.map do |park_hash|
 				park_hash["geometry"]["location"]
 			end
 		end
