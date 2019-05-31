@@ -7,7 +7,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
 
-// toogle button
+// toggle button
 $(document).ready(function(){
   $(".category-choice").click(function(){
     $(this).toggleClass("active");

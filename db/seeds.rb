@@ -205,7 +205,7 @@ end
 
 "=============================================================================================================================================================================================================================="
 
-# THIS IS THE CODE FOR RESTAURANT SCORE
+# THIS IS THE CODE FOR PARK SCORE
 
 def set_parks_score(district)
   arr_location = district.location

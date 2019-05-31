@@ -45,7 +45,8 @@ const initIndexMap = () => {
             map.removeSource(layer.id);
           }
         })
-      } else {
+      }
+      if (true) {
         // adding polygons
         polygons.forEach((polygon, index) => {
           map.addLayer({
@@ -67,7 +68,7 @@ const initIndexMap = () => {
             'layout': {},
             'paint': {
               'fill-color': '#FF0000',
-              'fill-opacity': 0.8,
+              'fill-opacity': 0.4,
             }
           })
         map.on('click', `montreal_${index}`, function (e) {
@@ -98,7 +99,7 @@ const setMarkers = (category, markerObjects, map, mapElement) => {
       .addTo(map);
       markerObjects.push(newMarker)
     });
-  };  
+  };
 }
 
 const initShowMap = () => {
@@ -106,7 +107,7 @@ const initShowMap = () => {
 
   if (mapElement) { // only build a map if there's a div#map to inject into
     const markerObjects = []
-    
+
     document.querySelector("#restaurant-btn").addEventListener("click", (event) => {
       setMarkers("restaurants", markerObjects, map, mapElement);
     });
