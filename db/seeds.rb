@@ -85,10 +85,6 @@ def set_restaurants_score(district)
   end
 end
 
- District.all.each do |district|
-  set_restaurants_score(district)
- end
-
 "=============================================================================================================================================================================================================================="
 
 
@@ -145,9 +141,6 @@ def set_schools_score(district)
   end
 end
 
- District.all.each do |district|
-  set_schools_score(district)
- end
 
 "=============================================================================================================================================================================================================================="
 
@@ -207,6 +200,8 @@ def set_subways_score(district)
 
 end
 District.all.each do |district|
+  set_restaurants_score(district)
+  set_schools_score(district)
   set_subways_score(district)
 end
 

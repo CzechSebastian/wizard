@@ -72,19 +72,45 @@ const initIndexMap = () => {
   }
 };
 
-// ==========================================================================================
+// =========================show map=================================================================
 
-document.querySelectorAll(".btn").forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-    console.log(event);
+const setMarkers = (category, markerObjects, map, mapElement) => {
+  markerObjects.forEach((marker) => {
+    marker.remove()
   });
-});
-
+  const markers = JSON.parse(mapElement.dataset[category]);
+  if (markers !== null ) {
+    markers.forEach((marker) => {
+      const newMarker = new mapboxgl.Marker()
+      .setLngLat([ marker.lng, marker.lat ])
+      .addTo(map);
+      markerObjects.push(newMarker)
+    });
+  };  
+}
 
 const initShowMap = () => {
   const mapElement = document.getElementById('show-map');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
+    const markerObjects = []
+    
+    document.querySelector("#restaurant-btn").addEventListener("click", (event) => {
+      setMarkers("restaurants", markerObjects, map, mapElement);
+    });
+
+    document.querySelector("#school-btn").addEventListener("click", (event) => {
+      setMarkers("schools", markerObjects, map, mapElement);
+    });
+
+    document.querySelector("#park-btn").addEventListener("click", (event) => {
+      setMarkers("parks", markerObjects, map, mapElement);
+    });
+
+    document.querySelector("#subway-btn").addEventListener("click", (event) => {
+      setMarkers("subways", markerObjects, map, mapElement);
+    });
+
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const center = JSON.parse(mapElement.dataset.center)
     const coordinates = JSON.parse(mapElement.dataset.coordinates)
@@ -126,14 +152,7 @@ const initShowMap = () => {
       mapboxgl: mapboxgl
     }));
 
-    const markers = JSON.parse(mapElement.dataset.restaurants);
-    if (markers !== null ) {
-      markers.forEach((marker) => {
-        new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(map);
-      });
-    }
+
   }
 };
 

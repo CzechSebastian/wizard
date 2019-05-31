@@ -10,6 +10,30 @@ class DistrictsController < ApplicationController
 				restaurant_hash["geometry"]["location"]
 			end
 		end
+
+		if @district.school_raw == nil
+  		@school_coordinates = []
+  	else
+  		@school_coordinates = @district.school_raw.map do |school_hash|
+				school_hash["geometry"]["location"]
+			end
+		end
+
+		if @district.parc_raw == nil
+  		@school_coordinates = []
+  	else
+  		@park_coordinates = @district.parc_raw.map do |park_hash|
+				park_hash["geometry"]["location"]
+			end
+		end
+
+		if @district.subway_raw == nil
+  		@subway_coordinates = []
+  	else
+  		@subway_coordinates = @district.parc_raw.map do |subway_hash|
+				subway_hash["geometry"]["location"]
+			end
+		end
   end
 
   def new
