@@ -1,4 +1,5 @@
 class DistrictsController < ApplicationController
+  skip_before_action :authenticate_user!
 
   def show
   	@district = District.find(params[:id])
