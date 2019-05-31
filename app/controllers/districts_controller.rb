@@ -30,7 +30,7 @@ class DistrictsController < ApplicationController
 		if @district.subway_raw == nil
   		@subway_coordinates = []
   	else
-  		@subway_coordinates = @district.parc_raw.map do |subway_hash|
+  		@subway_coordinates = @district.subway_raw.map do |subway_hash|
 				subway_hash["geometry"]["location"]
 			end
 		end
