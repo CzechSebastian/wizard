@@ -63,7 +63,7 @@ def set_restaurants_score(district)
 	    !restaurant["rating"].nil? && district.contains_point?([(restaurant["geometry"]["location"]["lng"]).to_f,(restaurant["geometry"]["location"]["lat"]).to_f])
   	end
 	 if valid_restaurants.length != 0
-    district.update(raw_restaurant: valid_restaurants)
+    district.update!(raw_restaurant: valid_restaurants)
 
 	  number = valid_restaurants.count
 	  puts district.name
@@ -76,12 +76,12 @@ def set_restaurants_score(district)
 
 	  average = sum/number
 	  puts average
-	  district.update(restaurant_score: average)
+	  district.update!(restaurant_score: average)
 
 	else
 		puts "This one has 0 places"
 		average = 0
-		district.update(restaurant_score: average)
+		district.update!(restaurant_score: average)
   end
 end
 
@@ -119,7 +119,7 @@ def set_schools_score(district)
       !school["rating"].nil? && district.contains_point?([(school["geometry"]["location"]["lng"]).to_f,(school["geometry"]["location"]["lat"]).to_f])
     end
    if valid_schools.length != 0
-    district.update(school_raw: valid_schools)
+    district.update!(school_raw: valid_schools)
 
     number = valid_schools.count
     puts district.name
@@ -132,12 +132,12 @@ def set_schools_score(district)
 
     average = sum/number
     puts average
-    district.update(school_score: average)
+    district.update!(school_score: average)
 
   else
     puts "This one has 0 places"
     average = 0
-    district.update(school_score: average)
+    district.update!(school_score: average)
   end
 end
 
@@ -183,15 +183,15 @@ def set_subways_score(district)
       # puts district.name
       # puts number
       score = 1
-      district.update(subway_score: score)
-      district.update(subway_raw: valid_subways)
+      district.update!(subway_score: score)
+      district.update!(subway_raw: valid_subways)
     else
       # puts 0
       # puts district.name
 
       score = 0
-      district.update(subway_score: score)
-      district.update(subway_raw: valid_subways)
+      district.update!(subway_score: score)
+      district.update!(subway_raw: valid_subways)
     end
 
     puts district.name
@@ -234,7 +234,7 @@ def set_parks_score(district)
       !park["rating"].nil? && district.contains_point?([(park["geometry"]["location"]["lng"]).to_f,(park["geometry"]["location"]["lat"]).to_f])
     end
    if valid_parks.length != 0
-    district.update(park_raw: valid_parks)
+    district.update!(park_raw: valid_parks)
 
     number = valid_parks.count
     puts district.name
@@ -247,12 +247,12 @@ def set_parks_score(district)
 
     average = sum/number
     puts average
-    district.update(park_score: average)
+    district.update!(park_score: average)
 
   else
     puts "This one has 0 places"
     average = 0
-    district.update(park_score: average)
+    district.update!(park_score: average)
   end
 end
 
