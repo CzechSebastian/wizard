@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :new ]
   resources :pages, only: [:index]
   resources :districts, only: [:index, :show]
-  root to: 'users#index'
+  root to: 'districts#index'
   resources :maps, only: [:index]
 end
