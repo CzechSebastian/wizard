@@ -2,7 +2,7 @@ import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 
-const initMapbox = () => {
+const initIndexMap = () => {
   const mapElement = document.getElementById('map');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
@@ -72,6 +72,93 @@ const initMapbox = () => {
   }
 };
 
+// =========================show map=================================================================
 
+const setMarkers = (category, markerObjects, map, mapElement) => {
+  markerObjects.forEach((marker) => {
+    marker.remove()
+  });
+  const markers = JSON.parse(mapElement.dataset[category]);
+  if (markers !== null ) {
+    markers.forEach((marker) => {
+      const newMarker = new mapboxgl.Marker()
+      .setLngLat([ marker.lng, marker.lat ])
+      .addTo(map);
+      markerObjects.push(newMarker)
+    });
+  };  
+}
+
+const initShowMap = () => {
+  const mapElement = document.getElementById('show-map');
+
+  if (mapElement) { // only build a map if there's a div#map to inject into
+    const markerObjects = []
+    
+    document.querySelector("#restaurant-btn").addEventListener("click", (event) => {
+      setMarkers("restaurants", markerObjects, map, mapElement);
+    });
+
+    document.querySelector("#school-btn").addEventListener("click", (event) => {
+      setMarkers("schools", markerObjects, map, mapElement);
+    });
+
+    document.querySelector("#park-btn").addEventListener("click", (event) => {
+      setMarkers("parks", markerObjects, map, mapElement);
+    });
+
+    document.querySelector("#subway-btn").addEventListener("click", (event) => {
+      setMarkers("subways", markerObjects, map, mapElement);
+    });
+
+    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+    const center = JSON.parse(mapElement.dataset.center)
+    const coordinates = JSON.parse(mapElement.dataset.coordinates)
+
+    const map = new mapboxgl.Map({
+      container: 'show-map',
+      style: 'mapbox://styles/mapbox/streets-v10',
+      center: center,
+      zoom: 13,
+      attributionControl: false
+    });
+
+    map.on('load', function() {
+      map.addLayer({
+        'id': 'maine',
+        'type': 'line',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Polygon',
+              'coordinates': [coordinates]
+            }
+          }
+        },
+        'layout': {},
+        'paint': {
+          'line-color': '#FF6057',
+          'line-width': 4
+        }
+      });
+     });
+
+    map.addControl(new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      marker: {
+      },
+      mapboxgl: mapboxgl
+    }));
+
+
+  }
+};
+
+const initMapbox = () => {
+  initIndexMap()
+  initShowMap()
+};
 
 export { initMapbox };

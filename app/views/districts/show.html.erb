@@ -1,0 +1,34 @@
+<h1>Find out more about the district</h1>
+
+<div class="container d-flex justify-content-between mr-4">
+	<div class="d-flex flex-column justify-content-between mr-4">
+		<button type="button" id="restaurant-btn" class="btn btn-primary">Restaurants</button>
+		<button type="button" class="btn btn-primary">Bars</button>
+		<button type="button" id="school-btn" class="btn btn-primary">Schools</button>
+		<button type="button" id="park-btn" class="btn btn-primary">Parks</button>
+		<button type="button" id="subway-btn" class="btn btn-primary">Subway stations</button>
+		<button type="button" class="btn btn-primary">Coffees</button>
+	</div>
+
+	<div 
+		class="map mr-4"
+		id="show-map"
+		style="width: 100%;
+		height: 500px;"
+		data-markers="<%= @markers.to_json %>"
+		data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+		data-center="<%= @district.location.to_json %>"
+		data-coordinates="<%= @district.coordinates.to_json %>"
+		data-restaurants="<%= @restaurant_coordinates.to_json %>"
+		data-schools="<%= @school_coordinates.to_json %>"
+		data-parks="<%= @park_coordinates.to_json %>"
+		data-subways="<%= @subway_coordinates.to_json %>"
+	>
+	</div>
+
+	
+</div>
+
+
+
+<%= link_to "Back to main page", pages_path, class:"btn btn-secondary btn-lg" %>
