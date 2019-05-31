@@ -15,3 +15,15 @@
 .btn-danger {
     border-radius: 6px;
 }
+
+.btn-show-category {
+    border-radius: 6px;
+    color: $secondary-color;
+    width: 160px;
+    // height: 40px;
+    box-shadow: 8px 8px 15px -6px rgba(153,153,153,0.5);
+}
+
+.btn-container {
+	margin: 15px;
+}
