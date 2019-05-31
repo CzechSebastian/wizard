@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_30_214037) do
+ActiveRecord::Schema.define(version: 2019_05_30_231448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 2019_05_30_214037) do
     t.datetime "updated_at", null: false
     t.float "restaurant_score"
     t.jsonb "raw_restaurant"
-    t.float "parc_score"
-    t.jsonb "parc_raw"
     t.float "school_score"
     t.jsonb "school_raw"
     t.float "quiet_score"
@@ -32,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_05_30_214037) do
     t.float "subway_score"
     t.jsonb "subway_raw"
     t.float "average"
+    t.float "park_score"
+    t.jsonb "park_raw"
   end
 
   create_table "users", force: :cascade do |t|
