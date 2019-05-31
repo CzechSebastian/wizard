@@ -1,13 +1,15 @@
-<h1>Find out more about the district</h1>
+<h1>Explore the neighbourhood <%= @district.name %></h1>
 
-<div class="container d-flex justify-content-between mr-4">
+
+<div class="d-flex justify-content-between btn-container">
 	<div class="d-flex flex-column justify-content-between mr-4">
-		<button type="button" id="restaurant-btn" class="btn btn-primary">Restaurants</button>
-		<button type="button" class="btn btn-primary">Bars</button>
-		<button type="button" id="school-btn" class="btn btn-primary">Schools</button>
-		<button type="button" id="park-btn" class="btn btn-primary">Parks</button>
-		<button type="button" id="subway-btn" class="btn btn-primary">Subway stations</button>
-		<button type="button" class="btn btn-primary">Coffees</button>
+		<button type="button" id="restaurant-btn" class="btn-show-category">RESTAURANTS</button>
+		<button type="button" class="btn-show-category">BARS</button>
+		<button type="button" id="school-btn" class="btn-show-category">SCHOOLS</button>
+		<button type="button" id="park-btn" class="btn-show-category">PARKS</button>
+		<button type="button" id="subway-btn" class="btn-show-category">Subway stations</button>
+		<button type="button" class="btn-show-category">COFFEES</button>
+		<button type="button" class="btn-show-category">HOUSES FOR SELL</button>
 	</div>
 
 	<div 
