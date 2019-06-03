@@ -1,19 +1,25 @@
+.map-display {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
 .hidden{
   display: none;
 }
 
 .category-choices {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin: 20px 0;
+  position: relative;
+  left: 50px;
+  margin: 10px 0;
+  width: 310px;
 }
 
 .category-choice {
+  margin: 3% 10% 2% 0px;
   background: #3EF49E;
   padding: 20px;
-  width: 100px;
-  height:100px;
+  width: 110px;
+  height:110px;
   border-radius: 50%;
   text-align: center;
   transition: 0.2s;
@@ -31,9 +37,9 @@
 
   &.active {
     opacity:1;
-    color: #2f40c4;
+    color: #5CBCF7;
     svg {
-      fill: #2f40c4;
+      fill: #5CBCF7;
     }
   }
 }
