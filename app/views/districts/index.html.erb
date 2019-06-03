@@ -4,7 +4,6 @@
     <%= render 'shared/searchbar' %>
   </div>
   <div class="container">
-
     <div
     class="map"
     id="map"
@@ -30,27 +29,27 @@
         <label class="category-choice" for="post_category_ids_icon_park">
           <%= inline_svg "leaf.svg", class: 'logo-icon' %>
         </label>
-        <input type="checkbox" name="criteria[]" class="hidden" value="bike" id="post_category_ids_icon_bike">
-        <label class="category-choice" for="post_category_ids_icon_bike">
-          <%= inline_svg "bike.svg", class: 'logo-icon' %>
+        <input type="checkbox" name="criteria[]" class="hidden" value="subway_station" id="post_category_ids_icon_subway_station">
+        <label class="category-choice" for="post_category_ids_icon_subway_station">
+          <%= inline_svg "subway.svg", class: 'logo-icon' %>
         </label>
       </div>
       <div class="category-choices">
-        <input type="checkbox" name="criteria[]" class="hidden" value="dog" id="post_category_ids_icon_dog">
-        <label class="category-choice" for="post_category_ids_icon_dog">
-          <%= inline_svg "dog.svg", class: 'logo-icon' %>
+        <input type="checkbox" name="criteria[]" class="hidden" value="bixi" id="post_category_ids_icon_bixi">
+        <label class="category-choice" for="post_category_ids_icon_bixi">
+          <%= inline_svg "bike.svg", class: 'logo-icon' %>
         </label>
-        <input type="checkbox" name="criteria[]" class="hidden" value="car" id="post_category_ids_icon_car">
-        <label class="category-choice" for="post_category_ids_icon_car">
+        <input type="checkbox" name="criteria[]" class="hidden" value="parking" id="post_category_ids_icon_parking">
+        <label class="category-choice" for="post_category_ids_icon_parking">
           <%= inline_svg "car.svg", class: 'logo-icon' %>
-        </label>
-        <input type="checkbox" name="criteria[]" class="hidden" value="family" id="post_category_ids_icon_family">
-        <label class="category-choice" for="post_category_ids_icon_family">
-          <%= inline_svg "family.svg", class: 'logo-icon' %>
         </label>
         <input type="checkbox" name="criteria[]" class="hidden" value="quiet" id="post_category_ids_icon_quiet">
         <label class="category-choice" for="post_category_ids_icon_quiet">
           <%= inline_svg "sound.svg", class: 'logo-icon' %>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="dog" id="post_category_ids_icon_dog">
+        <label class="category-choice" for="post_category_ids_icon_dog">
+          <%= inline_svg "dog.svg", class: 'logo-icon' %>
         </label>
       </div>
       <%= button_tag :submit, class: "hidden", id: "submit-criteria" %>

@@ -1,5 +1,4 @@
 import mapboxgl from 'mapbox-gl';
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 
 const initIndexMap = () => {
@@ -17,14 +16,6 @@ const initIndexMap = () => {
     zoom: 9.5,
     attributionControl: false
   });
-
-  map.addControl(new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    marker: {
-    },
-    mapboxgl: mapboxgl
-  }));
-
 
   refreshMapButton.addEventListener('click', function(){
     const polygons = JSON.parse(inputBox.value.replace(/&quot;/g,'"'));
