@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_30_231448) do
+ActiveRecord::Schema.define(version: 2019_06_03_202659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 2019_05_30_231448) do
     t.float "average", default: 0.0
     t.float "park_score", default: 0.0
     t.jsonb "park_raw"
+    t.float "bixi_score", default: 0.0
+    t.jsonb "bixi_raw", default: []
+    t.float "parking_score", default: 0.0
+    t.jsonb "parking_raw", default: []
+    t.float "dog_score", default: 0.0
+    t.jsonb "dog_raw", default: []
   end
 
   create_table "users", force: :cascade do |t|

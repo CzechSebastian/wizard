@@ -1,5 +1,5 @@
 class AddQuietRawToDistricts < ActiveRecord::Migration[5.2]
   def change
-  	add_column :districts, :quiet_raw, :jsonb
+  	add_column :districts, :quiet_raw, :jsonb, default: []
   end
 end

@@ -1,5 +1,4 @@
 import mapboxgl from 'mapbox-gl';
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 
 const initIndexMap = () => {
@@ -18,14 +17,11 @@ const initIndexMap = () => {
     zoom: 9.5,
     attributionControl: false
   });
-
   // document.querySelector('.score').addEventListener('click', function () {
   //   map.flyTo({
   //   center: [-76.61, 45.551]
   //   });
   // });
-
-
   refreshMapButton.addEventListener('click', function(){
     const polygons = JSON.parse(inputBox.value.replace(/&quot;/g,'"'));
 

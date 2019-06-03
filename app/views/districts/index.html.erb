@@ -1,3 +1,56 @@
+  <div class="top-container parallax text-center">
+    <div class="banner"></div>
+    <h1>Every neighbourhood has its own personnality. What's yours?</h1>
+    <%= render 'shared/searchbar' %>
+  </div>
+  <div class="container">
+    <div
+    class="map"
+    id="map"
+    style="width: 100%;
+    height: 500px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+  <input type="text" id="coordinates-to-show" class="hidden">
+  <button id="refresh-map" class="hidden"></button>
+    <%= form_tag maps_path, method: :get, remote: true do %>
+      <input type="hidden" name="criteria[]" value="">
+      <div class="category-choices">
+        <input type="checkbox" name="criteria[]" class="hidden" value="restaurant" id="post_category_ids_icon_restaurant">
+        <label class="category-choice" for="post_category_ids_icon_restaurant">
+          <%= inline_svg "restaurant.svg", class: 'logo-icon' %>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="school" id="post_category_ids_icon_school">
+        <label class="category-choice" for="post_category_ids_icon_school">
+          <%= inline_svg "school.svg", class: 'logo-icon' %>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="park" id="post_category_ids_icon_park">
+        <label class="category-choice" for="post_category_ids_icon_park">
+          <%= inline_svg "leaf.svg", class: 'logo-icon' %>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="subway_station" id="post_category_ids_icon_subway_station">
+        <label class="category-choice" for="post_category_ids_icon_subway_station">
+          <%= inline_svg "subway.svg", class: 'logo-icon' %>
+        </label>
+      </div>
+      <div class="category-choices">
+        <input type="checkbox" name="criteria[]" class="hidden" value="bixi" id="post_category_ids_icon_bixi">
+        <label class="category-choice" for="post_category_ids_icon_bixi">
+          <%= inline_svg "bike.svg", class: 'logo-icon' %>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="parking" id="post_category_ids_icon_parking">
+        <label class="category-choice" for="post_category_ids_icon_parking">
+          <%= inline_svg "car.svg", class: 'logo-icon' %>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="quiet" id="post_category_ids_icon_quiet">
+        <label class="category-choice" for="post_category_ids_icon_quiet">
+          <%= inline_svg "sound.svg", class: 'logo-icon' %>
+        </label>
+        <input type="checkbox" name="criteria[]" class="hidden" value="dog" id="post_category_ids_icon_dog">
+        <label class="category-choice" for="post_category_ids_icon_dog">
+          <%= inline_svg "dog.svg", class: 'logo-icon' %>
+        </label>
   <div class="container map-display">
       <div class="row">
         <div class="col-xl-8">
