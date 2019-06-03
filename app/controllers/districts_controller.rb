@@ -8,7 +8,11 @@ class DistrictsController < ApplicationController
   		@restaurant_coordinates = []
   	else
   		@restaurant_coordinates = @district.raw_restaurant.map do |restaurant_hash|
-				restaurant_hash["geometry"]["location"]
+        { 
+          lat: restaurant_hash["geometry"]["location"]["lat"],
+          lng: restaurant_hash["geometry"]["location"]["lng"],
+          category: "restaurants"
+        }
 			end
 		end
 
@@ -16,7 +20,11 @@ class DistrictsController < ApplicationController
   		@school_coordinates = []
   	else
   		@school_coordinates = @district.school_raw.map do |school_hash|
-				school_hash["geometry"]["location"]
+       { 
+          lat: school_hash["geometry"]["location"]["lat"],
+          lng: school_hash["geometry"]["location"]["lng"],
+          category: "schools"
+        }
 			end
 		end
 
@@ -24,7 +32,11 @@ class DistrictsController < ApplicationController
   		@school_coordinates = []
   	else
   		@park_coordinates = @district.park_raw.map do |park_hash|
-				park_hash["geometry"]["location"]
+        { 
+          lat: park_hash["geometry"]["location"]["lat"],
+          lng: park_hash["geometry"]["location"]["lng"],
+          category: "parks"
+        }
 			end
 		end
 
@@ -32,7 +44,11 @@ class DistrictsController < ApplicationController
   		@subway_coordinates = []
   	else
   		@subway_coordinates = @district.subway_raw.map do |subway_hash|
-				subway_hash["geometry"]["location"]
+        { 
+          lat: subway_hash["geometry"]["location"]["lat"],
+          lng: subway_hash["geometry"]["location"]["lng"],
+          category: "subways"
+        }
 			end
 		end
   end
