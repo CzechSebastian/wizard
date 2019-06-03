@@ -1,8 +1,11 @@
 class DistrictsController < ApplicationController
   skip_before_action :authenticate_user!
+  def index
+
+  end
 
   def show
-  	@district = District.find(params[:id])
+    @district = District.find(params[:id])
 
   	if @district.raw_restaurant == nil
   		@restaurant_coordinates = []
