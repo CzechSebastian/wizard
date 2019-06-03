@@ -1,12 +1,11 @@
 inputBox = document.getElementById('coordinates-to-show')
 refreshMapButton = document.getElementById('refresh-map')
-<% @districts = @districts.map { |district| { coordinates: district.coordinates, name: district.name, url: "/districts/#{district.id}" } } %>
+<% districts = @districts.map { |district| { coordinates: district.coordinates, name: district.name, url: "/districts/#{district.id}" } } %>
 
-coordinatesString = "<%= @districts.to_json %>"
+coordinatesString = "<%= districts.to_json %>"
 
 inputBox.value = coordinatesString
 
 refreshMapButton.click()
 
-
-
+document.getElementById('districts-card').innerHTML = "<%= j render 'card_top' %>"

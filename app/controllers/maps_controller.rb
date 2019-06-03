@@ -3,9 +3,9 @@ class MapsController < ApplicationController
 
   def index
     # params[:criteria] = ["", "restaurant", "school", ... ]
-
     # initialize le average a 0
     @districts = District.all
+
     # incrementer le score average selon les criteres selectionnes
     if params[:criteria].include? "restaurant"
       @districts = @districts.each do |district|
@@ -38,7 +38,6 @@ class MapsController < ApplicationController
         district.average += district.subway_score*1.5
       end
     end
-
     if params[:criteria].include? "bixi"
       @districts = @districts.each do |district|
         district.average += district.bixi_score
@@ -63,6 +62,38 @@ class MapsController < ApplicationController
       end
     end
 
+    # # ONLY restaurants:
+    # if params[:criteria].includes("restaurant")
+
+    #   restaurant_score = District.all.map do |district|
+    #     score = district.restaurant_score
+
+    #     @districts = restaurant_score.sort_by { |district| 1/score }
+    #     @district = @districts.first(10)
+    #   end
+    # end
+
+    # if clicked button is only schools:
+
+    # school_score = District.all.map do |district|
+    #   score = district.school_score
+
+    #   @districts = school_score.sort_by { |district| 1/score }
+    #   @district = @districts.first(10)
+    # end
+
+    # # if clicked buttons are both:
+
+    # resto = District.all.map do |district|
+    #   district.restaurant_score
+    #   district
+    # end
+
+    # averagedistrict = District.all.map do |district|
+    #   score = (district.restaurant_score + district.school_score) / 2
+    #   district.average = score
+    #   district
+    # end
     @districts = @districts.sort_by { |district| district.average }
     @districts = @districts.last(10)
     @districts = [] if params[:criteria].count <= 1
@@ -74,3 +105,4 @@ class MapsController < ApplicationController
     end
   end
 end
+

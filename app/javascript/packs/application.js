@@ -13,4 +13,27 @@ $(document).ready(function(){
       $("#submit-criteria").click();
     }, 100)
   });
+$(".category-choice").click(function(){
+    $('#districts-card').addClass("active");
+    setTimeout(() => {
+      $("#submit-criteria").click();
+    }, 100)
+  });
+});
+
+
+//Button to top
+var btn = $('#button');
+
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 300) {
+    btn.addClass('show');
+  } else {
+    btn.removeClass('show');
+  }
+});
+
+btn.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '300');
 });
