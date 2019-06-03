@@ -82,24 +82,22 @@ const initIndexMap = () => {
 };
 
 // =========================show map=================================================================
+const filters = []
+let previousFilters = []
+let newFilters = []
 
-const setMarkers = (category, markerObjects, map, mapElement) => {
-  markerObjects.forEach((marker) => {
-    marker.remove()
-  });
+const mapShow = document.getElementById('show-map');
+let markers = []
+let markerObjects = []
+let map = null;
 
-  const markers = JSON.parse(mapElement.dataset[category]);
-  if (markers !== null ) {
-    markers.forEach((marker) => {
-      var e = document.createElement('div');
-      e.innerHTML = '<i class="fas fa-map-marker-alt"></i>'
-      e.className = 'marker'
-      const newMarker = new mapboxgl.Marker(e)
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
-      markerObjects.push(newMarker)
-    });
-  };
+const categoryClasses = {
+  restaurants: '<div class="marker-item"><i class="fas fa-utensils"></i></div>',
+  schools: '<div class="marker-item"><i class="fas fa-graduation-cap""></i></div>',
+  bars: '<div class="marker-item"><i class="fas fa-glass-martini-alt"></i></div>',
+  subways: '<div class="marker-item"><i class="fas fa-subway"></i></div>',
+  parks: '<div class="marker-item"><i class="fas fa-leaf"></i></div>'
+
 }
 
 const initShowMap = () => {
@@ -108,33 +106,45 @@ const initShowMap = () => {
   if (mapElement) { // only build a map if there's a div#map to inject into
     const markerObjects = []
 
-  document.querySelector("#restaurant-btn").addEventListener("click", (event) => {
-    setMarkers("restaurants", markerObjects, map, mapElement);
-  });
+    // const restaurantsBtn = document.querySelector("#restaurant-btn")
+    // restaurantsBtn.addEventListener("click", (event) => {
+    //   if (restaurantsBtn.classList.contains("clicked")) {
+    //     removeMarkers(markerObjects)
+    //   } else { 
+    //     addMarkers("restaurants", markerObjects, map, mapElement)
+    //   };
+    //   restaurantsBtn.classList.toggle("clicked")
+    // });
 
-  document.querySelector("#school-btn").addEventListener("click", (event) => {
-    setMarkers("schools", markerObjects, map, mapElement);
-  });
+    // const schoolsBtn = document.querySelector("#school-btn")
+    // schoolsBtn.addEventListener("click", (event) => {
+    //   if (schoolsBtn.classList.contains("clicked")) {
+    //     removeMarkers(markerObjects)
+    //   } else {
+    //   addMarkers("schools", markerObjects, map, mapElement);
+    //   };
+    //   restaurantsBtn.classList.toggle("clicked")
+    // });
 
-  document.querySelector("#park-btn").addEventListener("click", (event) => {
-    setMarkers("parks", markerObjects, map, mapElement);
-  });
+    // document.querySelector("#park-btn").addEventListener("click", (event) => {
+    //   setMarkers("parks", markerObjects, map, mapElement);
+    // });
 
-  document.querySelector("#subway-btn").addEventListener("click", (event) => {
-    setMarkers("subways", markerObjects, map, mapElement);
-  });
+    // document.querySelector("#subway-btn").addEventListener("click", (event) => {
+    //   setMarkers("subways", markerObjects, map, mapElement);
+    // });
 
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   const center = JSON.parse(mapElement.dataset.center)
   const coordinates = JSON.parse(mapElement.dataset.coordinates)
 
-  const map = new mapboxgl.Map({
-    container: 'show-map',
-    style: 'mapbox://styles/mapbox/streets-v10',
-    center: center,
-    zoom: 13,
-    attributionControl: false
-  });
+    map = new mapboxgl.Map({
+      container: 'show-map',
+      style: 'mapbox://styles/mapbox/streets-v10',
+      center: center,
+      zoom: 13,
+      attributionControl: false
+    });
 
   map.on('load', function() {
     map.addLayer({
@@ -168,6 +178,68 @@ const initShowMap = () => {
 
   }
 };
+
+const handleFilters = (category) => {
+  previousFilters = JSON.parse(JSON.stringify(filters));
+
+  if (filters.includes(category)) {
+    var index = filters.indexOf(category)
+    filters.splice(index, 1);
+  } else {
+    filters.push(category)
+  };
+};
+
+const triggerMapRefresh = () => {
+  console.log("Filters")
+  console.log(filters)
+  console.log("previousFilters")
+  console.log(previousFilters)
+  filters.forEach((category) => {
+    if (!previousFilters.includes(category)) {
+      markers.push(JSON.parse(mapShow.dataset[category]));
+    }
+  })
+  console.log(markers);
+  markers = markers.flat();
+
+  markers.forEach((marker) => {
+
+    setTimeout(() => {
+      var e = document.createElement('div');
+      e.innerHTML = categoryClasses[marker.category]
+      e.className = 'marker-' + marker.category;
+      e.wizcategory = marker.category;
+      const newMarker = new mapboxgl.Marker(e)
+      .setLngLat([ marker.lng, marker.lat ])
+      .addTo(map);
+      markerObjects.push(newMarker)
+    }, Math.floor(Math.random() * Math.floor(1000)))
+
+  });
+  markers = [];
+}
+
+document.querySelectorAll(".btn-show-category").forEach((element) => {
+  element.addEventListener("click", (event) => {
+    // console.log(element.getAttribute("data-value"))
+
+    handleFilters(element.getAttribute("data-value"));
+    deleteAllMarkers();
+    console.log(filters)
+    triggerMapRefresh()
+  })
+  });
+
+const deleteAllMarkers = () => {
+  markerObjects.forEach((marker) => {
+     if (!filters.includes(marker._element.wizcategory)) {
+      marker.remove()
+     }
+  });
+}
+
+
 
 const initMapbox = () => {
   initIndexMap()
