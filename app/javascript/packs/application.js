@@ -15,7 +15,14 @@ $(document).ready(function(){
       $("#submit-criteria").click();
     }, 100)
   });
+$(".category-choice").click(function(){
+    $('#districts-card').addClass("active");
+    setTimeout(() => {
+      $("#submit-criteria").click();
+    }, 100)
+  });
 });
+
 
 //Button to top
 var btn = $('#button');
