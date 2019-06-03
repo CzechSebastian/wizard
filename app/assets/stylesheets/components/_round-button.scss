@@ -12,19 +12,21 @@
 .category-choice {
   background: #3EF49E;
   padding: 20px;
-  width: 150px;
-  height:150px;
+  width: 100px;
+  height:100px;
   border-radius: 50%;
   text-align: center;
-  transition: 0.4s;
+  transition: 0.2s;
   opacity: 0.8;
-  border: solid 8px (rgba(47, 64, 196, 0.00));
+  border: solid 4px (rgba(47, 64, 196, 0.00));
   svg {
     fill: white
-  } 
+  }
 
   &:hover {
-    border: solid 8px (rgba(47, 64, 196, 1.00));
+    //border: solid 4px (rgba(47, 64, 196, 1.00));
+    transform: scale(1.1);
+
   }
 
   &.active {
