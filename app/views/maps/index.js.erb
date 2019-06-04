@@ -1,11 +1,22 @@
 inputBox = document.getElementById('coordinates-to-show')
 refreshMapButton = document.getElementById('refresh-map')
 <% districts = @districts.map { |district| { coordinates: district.coordinates, name: district.name, url: "/districts/#{district.id}" } } %>
-
 coordinatesString = "<%= districts.to_json %>"
-
 inputBox.value = coordinatesString
-
 refreshMapButton.click()
 
+
 document.getElementById('districts-card').innerHTML = "<%= j render 'card_top' %>"
+
+// console.log("Script des cards marche")
+inputFlyBox = document.getElementById('fly-to')
+refreshFlyButton = document.getElementById('submit-to-fly')
+
+document.querySelectorAll(".card-product").forEach((card) => {
+  card.addEventListener('click', () => {
+    console.log(card)
+    coordinatesFlyString = card.dataset.districtLocation
+    inputFlyBox.value = coordinatesFlyString
+    refreshFlyButton.click()
+  })
+})
