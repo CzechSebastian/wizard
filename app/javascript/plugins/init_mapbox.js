@@ -96,8 +96,10 @@ const categoryClasses = {
   schools: '<div class="marker-item"><i class="fas fa-graduation-cap""></i></div>',
   bars: '<div class="marker-item"><i class="fas fa-glass-martini-alt"></i></div>',
   subways: '<div class="marker-item"><i class="fas fa-subway"></i></div>',
-  parks: '<div class="marker-item"><i class="fas fa-leaf"></i></div>'
-
+  parks: '<div class="marker-item"><i class="fas fa-leaf"></i></div>',
+  bixis: '<div class="marker-item"><i class="fas fa-bicycle"></i></div>',
+  coffees: '<div class="marker-item"><i class="fas fa-coffee"></i>/div>',
+  gyms: '<div class="marker-item"><i class="fas fa-dumbbell"></i>/div>'
 }
 
 const initShowMap = () => {
@@ -143,7 +145,8 @@ const initShowMap = () => {
       style: 'mapbox://styles/mapbox/streets-v10',
       center: center,
       zoom: 13,
-      attributionControl: false
+      attributionControl: false,
+      bearing: -45
     });
 
   map.on('load', function() {
@@ -214,7 +217,7 @@ const triggerMapRefresh = () => {
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map);
       markerObjects.push(newMarker)
-    }, Math.floor(Math.random() * Math.floor(1000)))
+    }, Math.floor(Math.random() * Math.floor(150)))
 
   });
   markers = [];
