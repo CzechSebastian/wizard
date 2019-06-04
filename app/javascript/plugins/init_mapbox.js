@@ -22,6 +22,7 @@ const initIndexMap = () => {
   //   center: [-76.61, 45.551]
   //   });
   // });
+
   refreshMapButton.addEventListener('click', function(){
     const polygons = JSON.parse(inputBox.value.replace(/&quot;/g,'"'));
 
@@ -110,7 +111,7 @@ const initShowMap = () => {
     // restaurantsBtn.addEventListener("click", (event) => {
     //   if (restaurantsBtn.classList.contains("clicked")) {
     //     removeMarkers(markerObjects)
-    //   } else { 
+    //   } else {
     //     addMarkers("restaurants", markerObjects, map, mapElement)
     //   };
     //   restaurantsBtn.classList.toggle("clicked")
@@ -143,7 +144,10 @@ const initShowMap = () => {
       style: 'mapbox://styles/mapbox/streets-v10',
       center: center,
       zoom: 13,
-      attributionControl: false
+      attributionControl: false,
+      pitch: 50, // pitch in degrees
+      bearing: -60, // bearing in degrees
+      // zoom: 20
     });
 
   map.on('load', function() {
@@ -166,6 +170,52 @@ const initShowMap = () => {
         'line-width': 4
       }
     });
+
+  // SETTING THE BUILDING 3D MODELS -------------
+    var layers = map.getStyle().layers;
+
+    var labelLayerId;
+
+    for (var i = 0; i < layers.length; i++) {
+      if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+      labelLayerId = layers[i].id;
+      break;
+      }
+    }
+
+    map.addLayer({
+      'id': '3d-buildings',
+      'source': 'composite',
+      'source-layer': 'building',
+      'filter': ['==', 'extrude', 'true'],
+      'type': 'fill-extrusion',
+      'minzoom': 10,
+      'paint': {
+      'fill-extrusion-color': '#aaa',
+
+      // use an 'interpolate' expression to add a smooth transition effect to the
+      // buildings as the user zooms in
+      'fill-extrusion-height': [
+        "interpolate", ["linear"], ["zoom"],
+        15, 0,
+        15.05, ["get", "height"]
+        ],
+        'fill-extrusion-base': [
+        "interpolate", ["linear"], ["zoom"],
+        15, 0,
+        15.05, ["get", "min_height"]
+      ],
+      'fill-extrusion-opacity': .6
+      }
+    }, labelLayerId);
+
+
+
+
+
+
+
+
   });
 
     // map.addControl(new MapboxGeocoder({

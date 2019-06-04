@@ -21,17 +21,17 @@ ActiveRecord::Schema.define(version: 2019_06_03_202659) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "restaurant_score", default: 0.0
-    t.jsonb "raw_restaurant"
+    t.jsonb "raw_restaurant", default: []
     t.float "school_score", default: 0.0
-    t.jsonb "school_raw"
+    t.jsonb "school_raw", default: []
     t.float "quiet_score", default: 0.0
-    t.jsonb "quiet_raw"
+    t.jsonb "quiet_raw", default: []
     t.jsonb "location"
     t.float "subway_score", default: 0.0
-    t.jsonb "subway_raw"
+    t.jsonb "subway_raw", default: []
     t.float "average", default: 0.0
     t.float "park_score", default: 0.0
-    t.jsonb "park_raw"
+    t.jsonb "park_raw", default: []
     t.float "bixi_score", default: 0.0
     t.jsonb "bixi_raw", default: []
     t.float "parking_score", default: 0.0
