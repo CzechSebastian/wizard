@@ -15,17 +15,22 @@ const initIndexMap = () => {
     style: 'mapbox://styles/mapbox/streets-v10',
     center: [-73.61, 45.551],
     zoom: 9.5,
-    attributionControl: false
   });
-  // document.querySelector('.score').addEventListener('click', function () {
-  //   map.flyTo({
-  //   center: [-76.61, 45.551]
-  //   });
-  // });
+
+
+  document.getElementById('submit-to-fly').addEventListener('click', function () {
+    let districtCenter = document.getElementById("fly-to").value;
+    districtCenter = JSON.parse(districtCenter.replace(/&quot;/g,'"'));
+    map.flyTo({
+      center: districtCenter,
+      zoom: 12.3
+    });
+  });
+
+
   refreshMapButton.addEventListener('click', function(){
     const polygons = JSON.parse(inputBox.value.replace(/&quot;/g,'"'));
 
-    console.log(polygons)
 
       // Checking if there is a layer that starts with "montreal_"
       const districtLayerIsPresent = map.getStyle().layers.some((layer) => {
@@ -63,8 +68,8 @@ const initIndexMap = () => {
             },
             'layout': {},
             'paint': {
-              'fill-color': '#FF0000',
-              'fill-opacity': 0.4,
+              'fill-color': '#5CBCF7',
+              'fill-opacity': 0.7,
             }
           })
           map.on('click', `montreal_${index}`, function (e) {
@@ -110,7 +115,7 @@ const initShowMap = () => {
     // restaurantsBtn.addEventListener("click", (event) => {
     //   if (restaurantsBtn.classList.contains("clicked")) {
     //     removeMarkers(markerObjects)
-    //   } else { 
+    //   } else {
     //     addMarkers("restaurants", markerObjects, map, mapElement)
     //   };
     //   restaurantsBtn.classList.toggle("clicked")
@@ -134,9 +139,9 @@ const initShowMap = () => {
     //   setMarkers("subways", markerObjects, map, mapElement);
     // });
 
-  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-  const center = JSON.parse(mapElement.dataset.center)
-  const coordinates = JSON.parse(mapElement.dataset.coordinates)
+    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+    const center = JSON.parse(mapElement.dataset.center)
+    const coordinates = JSON.parse(mapElement.dataset.coordinates)
 
     map = new mapboxgl.Map({
       container: 'show-map',
@@ -146,27 +151,27 @@ const initShowMap = () => {
       attributionControl: false
     });
 
-  map.on('load', function() {
-    map.addLayer({
-      'id': 'maine',
-      'type': 'line',
-      'source': {
-        'type': 'geojson',
-        'data': {
-          'type': 'Feature',
-          'geometry': {
-            'type': 'Polygon',
-            'coordinates': [coordinates]
+    map.on('load', function() {
+      map.addLayer({
+        'id': 'maine',
+        'type': 'line',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Polygon',
+              'coordinates': [coordinates]
+            }
           }
+        },
+        'layout': {},
+        'paint': {
+          'line-color': '#FF6057',
+          'line-width': 4
         }
-      },
-      'layout': {},
-      'paint': {
-        'line-color': '#FF6057',
-        'line-width': 4
-      }
+      });
     });
-  });
 
     // map.addControl(new MapboxGeocoder({
     //   accessToken: mapboxgl.accessToken,
@@ -229,14 +234,14 @@ document.querySelectorAll(".btn-show-category").forEach((element) => {
     console.log(filters)
     triggerMapRefresh()
   })
-  });
+});
 
 const deleteAllMarkers = () => {
   markerObjects.forEach((marker) => {
-     if (!filters.includes(marker._element.wizcategory)) {
-      marker.remove()
-     }
-  });
+   if (!filters.includes(marker._element.wizcategory)) {
+    marker.remove()
+  }
+});
 }
 
 

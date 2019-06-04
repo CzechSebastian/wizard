@@ -9,18 +9,16 @@ initMapbox();
 $(document).ready(function(){
   $(".category-choice").click(function(){
     $(this).toggleClass("active");
-    setTimeout(() => {
-      $("#submit-criteria").click();
-    }, 100)
-  });
-$(".category-choice").click(function(){
-    $('#districts-card').addClass("active");
+    if ( $(".category-choice").is(".active")) {
+      $('#districts-card').slideDown( "slow" );
+  } else {
+      $('#districts-card').slideUp( "slow" );
+    }
     setTimeout(() => {
       $("#submit-criteria").click();
     }, 100)
   });
 });
-
 
 //Button to top
 var btn = $('#button');

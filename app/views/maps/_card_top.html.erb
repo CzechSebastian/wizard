@@ -1,14 +1,13 @@
 
 <% @districts.last(3).each do |district| %>
 <div class="row">
-<div class="card-trip">
-  <div class="card-trip-infos">
-    <div>
-      <p><%= district[:name] %></p>
-      <% p district %>
-      <p class="score"><%= district[:average] %></p>
+  <div class="card-trip" data-district-location="<%= district.location %>">
+    <div class="card-trip-infos">
+      <div >
+        <p><%= district[:name] %></p>
+        <p class="score"><%= district[:average] %></p>
+      </div>
     </div>
   </div>
-</div>
 </div>
 <% end %>
