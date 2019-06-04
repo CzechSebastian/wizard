@@ -17,6 +17,13 @@ class District < ApplicationRecord
    end
    return contains_point
  end
+ 
+ def set_score(score_type)
+    sorted_score = @districts.sort_by{ |district| self[score_type] * -1 }
+    sorted = sorted_score.find_index { |x| x.id  == self.id }
+    sorted 
+ end
+
 
  private
 

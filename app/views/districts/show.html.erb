@@ -39,8 +39,7 @@
 			</button>
 			<div class="collapse" id="collapseExample">
 			  <div class="card card-body" id="map-card-down">
-			    <% sorted_parks_score = @districts.sort_by{ |score| -score.park_score} %>
-			    <p>Park score <%= sorted = sorted_parks_score.find_index { |x| x.id  == @district.id } %>  / 91 </p>
+			  	<!-- <%= set_score() %> -->
 			  </div>
 			</div>
 		</div>
