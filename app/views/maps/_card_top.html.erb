@@ -6,7 +6,7 @@
     <div>
       <p><%= district[:name] %></p>
       <% p district %>
-      <p class="score"><%= district[:average] %></p>
+      <p class="score"><%= (district[:average] / (params[:criteria].length - 1)) %></p>
     </div>
   </div>
 </div>

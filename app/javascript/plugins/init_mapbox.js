@@ -1,6 +1,5 @@
 import mapboxgl from 'mapbox-gl';
 
-
 const initIndexMap = () => {
   const mapElement = document.getElementById('map');
 
@@ -112,7 +111,7 @@ const initShowMap = () => {
     // restaurantsBtn.addEventListener("click", (event) => {
     //   if (restaurantsBtn.classList.contains("clicked")) {
     //     removeMarkers(markerObjects)
-    //   } else { 
+    //   } else {
     //     addMarkers("restaurants", markerObjects, map, mapElement)
     //   };
     //   restaurantsBtn.classList.toggle("clicked")
@@ -207,7 +206,7 @@ const triggerMapRefresh = () => {
   markers = markers.flat();
 
   markers.forEach((marker) => {
-
+     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
     setTimeout(() => {
       var e = document.createElement('div');
       e.innerHTML = categoryClasses[marker.category]
@@ -215,6 +214,7 @@ const triggerMapRefresh = () => {
       e.wizcategory = marker.category;
       const newMarker = new mapboxgl.Marker(e)
       .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup)
       .addTo(map);
       markerObjects.push(newMarker)
     }, Math.floor(Math.random() * Math.floor(150)))
