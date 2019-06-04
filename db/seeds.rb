@@ -384,7 +384,8 @@ def set_quiet_score(district)
       district.contains_point?([(night_club["geometry"]["location"]["lng"]).to_f,(night_club["geometry"]["location"]["lat"]).to_f])
     end
 
-
+      district.update!(quiet_raw: valid_night_clubs)
+puts valid_night_clubs
     if valid_night_clubs.length == 0
       score = 5
       district.update!(quiet_score: score)
@@ -462,13 +463,131 @@ def set_dog_score(district)
     puts district.dog_score
 end
 
+"=============================================================================================================================================================================================================================="
+
+
+"=============================================================================================================================================================================================================================="
+
+def set_bars_score(district)
+  arr_location = district.location
+  url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{arr_location[1]},#{arr_location[0]}&radius=1500&type=bar&key=#{ENV["GOOGLE_API_KEY"]}"
+  response = RestClient.get url
+  results = JSON.parse(response)
+
+  last_page_token = results["next_page_token"]
+
+  bars = []
+
+  bars << results["results"]
+
+  while last_page_token != nil
+    sleep 2
+
+    response = RestClient.get "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=#{ENV["GOOGLE_API_KEY"]}&pagetoken=#{last_page_token}"
+    results = JSON.parse(response)
+
+    last_page_token = results["next_page_token"]
+
+    bars << results["results"]
+  end
+
+    valid_bars = bars.flatten.select do |bar|
+      district.contains_point?([(bar["geometry"]["location"]["lng"]).to_f,(bar["geometry"]["location"]["lat"]).to_f])
+    end
+      district.update!(bar_raw: valid_bars)
+
+puts district.name
+puts valid_bars.length
+end
+
+"=============================================================================================================================================================================================================================="
+
+
+"=============================================================================================================================================================================================================================="
+
+def set_cafes_score(district)
+  arr_location = district.location
+  url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{arr_location[1]},#{arr_location[0]}&radius=1500&type=cafe&key=#{ENV["GOOGLE_API_KEY"]}"
+  response = RestClient.get url
+  results = JSON.parse(response)
+
+  last_page_token = results["next_page_token"]
+
+  cafes = []
+
+  cafes << results["results"]
+
+  while last_page_token != nil
+    sleep 2
+
+    response = RestClient.get "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=#{ENV["GOOGLE_API_KEY"]}&pagetoken=#{last_page_token}"
+    results = JSON.parse(response)
+
+    last_page_token = results["next_page_token"]
+
+    cafes << results["results"]
+  end
+
+    valid_cafes = cafes.flatten.select do |cafe|
+      district.contains_point?([(cafe["geometry"]["location"]["lng"]).to_f,(cafe["geometry"]["location"]["lat"]).to_f])
+    end
+      district.update!(cafe_raw: valid_cafes)
+
+puts district.name
+puts valid_cafes.length
+end
+
+"=============================================================================================================================================================================================================================="
+
+
+"=============================================================================================================================================================================================================================="
+def set_gyms_score(district)
+  arr_location = district.location
+  url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{arr_location[1]},#{arr_location[0]}&radius=1500&type=gym&key=#{ENV["GOOGLE_API_KEY"]}"
+  response = RestClient.get url
+  results = JSON.parse(response)
+
+  last_page_token = results["next_page_token"]
+
+  gyms = []
+
+  gyms << results["results"]
+
+  while last_page_token != nil
+    sleep 2
+
+    response = RestClient.get "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=#{ENV["GOOGLE_API_KEY"]}&pagetoken=#{last_page_token}"
+    results = JSON.parse(response)
+
+    last_page_token = results["next_page_token"]
+
+    gyms << results["results"]
+  end
+
+    valid_gyms = gyms.flatten.select do |gym|
+      district.contains_point?([(gym["geometry"]["location"]["lng"]).to_f,(gym["geometry"]["location"]["lat"]).to_f])
+    end
+      district.update!(gym_raw: valid_gyms)
+
+puts district.name
+puts valid_gyms.length
+end
+
+"=============================================================================================================================================================================================================================="
+
+
+"=============================================================================================================================================================================================================================="
+
 District.all.each do |district|
-  set_restaurants_score(district)
-  set_schools_score(district)
-  set_subways_score(district)
-  set_parks_score(district)
+  # set_restaurants_score(district)
+  # set_schools_score(district)
+  # set_subways_score(district)
+  # set_parks_score(district)
   set_bikes_score(district)
   set_parkings_score(district)
   set_quiet_score(district)
   set_dog_score(district)
+  set_bars_score(district)
+  set_cafes_score(district)
+  set_gyms_score(district)
 end

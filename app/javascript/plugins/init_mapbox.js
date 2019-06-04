@@ -1,6 +1,5 @@
 import mapboxgl from 'mapbox-gl';
 
-
 const initIndexMap = () => {
   const mapElement = document.getElementById('map');
 
@@ -101,8 +100,10 @@ const categoryClasses = {
   schools: '<div class="marker-item"><i class="fas fa-graduation-cap""></i></div>',
   bars: '<div class="marker-item"><i class="fas fa-glass-martini-alt"></i></div>',
   subways: '<div class="marker-item"><i class="fas fa-subway"></i></div>',
-  parks: '<div class="marker-item"><i class="fas fa-leaf"></i></div>'
-
+  parks: '<div class="marker-item"><i class="fas fa-leaf"></i></div>',
+  bixis: '<div class="marker-item"><i class="fas fa-bicycle"></i></div>',
+  coffees: '<div class="marker-item"><i class="fas fa-coffee"></i></div>',
+  gyms: '<div class="marker-item"><i class="fas fa-dumbbell"></i></div>'
 }
 
 const initShowMap = () => {
@@ -148,7 +149,8 @@ const initShowMap = () => {
       style: 'mapbox://styles/mapbox/streets-v10',
       center: center,
       zoom: 13,
-      attributionControl: false
+      attributionControl: false,
+      bearing: -45
     });
 
     map.on('load', function() {
@@ -209,7 +211,7 @@ const triggerMapRefresh = () => {
   markers = markers.flat();
 
   markers.forEach((marker) => {
-
+     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
     setTimeout(() => {
       var e = document.createElement('div');
       e.innerHTML = categoryClasses[marker.category]
@@ -217,9 +219,10 @@ const triggerMapRefresh = () => {
       e.wizcategory = marker.category;
       const newMarker = new mapboxgl.Marker(e)
       .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup)
       .addTo(map);
       markerObjects.push(newMarker)
-    }, Math.floor(Math.random() * Math.floor(1000)))
+    }, Math.floor(Math.random() * Math.floor(150)))
 
   });
   markers = [];

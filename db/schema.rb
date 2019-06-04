@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_03_202659) do
+ActiveRecord::Schema.define(version: 2019_06_04_145648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(version: 2019_06_03_202659) do
     t.jsonb "parking_raw", default: []
     t.float "dog_score", default: 0.0
     t.jsonb "dog_raw", default: []
+    t.float "bar_score", default: 0.0
+    t.jsonb "bar_raw", default: []
+    t.float "cafe_score", default: 0.0
+    t.jsonb "cafe_raw", default: []
+    t.float "gym_score", default: 0.0
+    t.jsonb "gym_raw", default: []
   end
 
   create_table "users", force: :cascade do |t|
