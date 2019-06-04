@@ -19,9 +19,9 @@ class District < ApplicationRecord
  end
  
  def set_score(score_type)
-    sorted_score = @districts.sort_by{ |district| self[score_type] * -1 }
+    sorted_score = District.all.sort_by{ |district| self[score_type]  }
     sorted = sorted_score.find_index { |x| x.id  == self.id }
-    sorted 
+    District.count - sorted 
  end
 
 
