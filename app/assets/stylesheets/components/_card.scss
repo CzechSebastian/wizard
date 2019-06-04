@@ -90,16 +90,12 @@ $med-orange: #F4945B;
   }
 
 .card-product {
-  position: relative;
-  left: 5px;
-  margin-top: 12px;
-  overflow: hidden;
   height: 100px;
-  width: 95%;
   background: white;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  margin: 12px 10px;
 }
 
 .card-product img {

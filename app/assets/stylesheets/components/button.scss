@@ -17,9 +17,12 @@
 }
 
 .btn-show-category {
-    border-radius: 6px;
-    color: $secondary-color;
-    width: 160px;
+
+    border-radius: 42px;
+    color: #9EADC8;
+    font-size: 45px; 
+    width: 80px;
+    height: 80px;
     // height: 40px;
     box-shadow: 8px 8px 15px -6px rgba(153,153,153,0.5);
     display: flex;
@@ -32,7 +35,6 @@
 
     p {
     	margin: 0;
-	    font-family: 'Roboto', sans-serif;
 		font-weight: 500;
 		color: $secondary-color;
     }
