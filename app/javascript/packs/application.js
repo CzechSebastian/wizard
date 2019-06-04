@@ -5,20 +5,42 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
 
-// toggle button
-$(document).ready(function(){
-  $(".category-choice").click(function(){
-    $(this).toggleClass("active");
-    if ( $(".category-choice").is(".active")) {
-      $('#districts-card').slideDown( "slow" );
-  } else {
-      $('#districts-card').slideUp( "slow" );
+const criteria = document.querySelector("#submit-criteria")
+const district = document.querySelector("#districts-card")
+const categoryChoices = document.querySelectorAll(".category-choice")
+const categoryMessage = document.querySelector(".criteria-title")
+
+categoryChoices.forEach((category) => {
+  category.addEventListener("click", (event) => {
+    district.classList.add("active")
+
+    let count = document.querySelectorAll(".category-choice.active").length;
+    const hasClassActive = category.classList.contains("active");
+
+    if (count < 3 || hasClassActive) {
+      category.classList.toggle("active")
+      setTimeout(() => {
+        criteria.click();
+      }, 100)
+    } else{
+      categoryMessage.classList.add("shake")
+      setTimeout(() => {
+        categoryMessage.classList.remove("shake")
+      }, 1000)
     }
-    setTimeout(() => {
-      $("#submit-criteria").click();
-    }, 100)
-  });
-});
+    count = document.querySelectorAll(".category-choice.active").length;
+    if (count === 0) {
+      categoryMessage.innerHTML = "Select your 3 main criterias"
+     } else if (count === 1) {
+      categoryMessage.innerHTML = "You have 2 more criterias left"
+     } else if (count === 2) {
+      categoryMessage.innerHTML = "You have 1 more criteria left"
+     }else if (count === 3) {
+      categoryMessage.innerHTML = "We've summed up the best districts for you!"
+     }
+
+  })
+})
 
 //Button to top
 var btn = $('#button');

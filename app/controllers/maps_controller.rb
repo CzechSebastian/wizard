@@ -6,7 +6,6 @@ class MapsController < ApplicationController
     # initialize le average a 0
     @districts = District.all
 
-    # incrementer le score average selon les criteres selectionnes
     if params[:criteria].include? "restaurant"
       @districts = @districts.each do |district|
         if district.raw_restaurant && district.raw_restaurant.length > 10
