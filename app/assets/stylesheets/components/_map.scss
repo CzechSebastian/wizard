@@ -1,5 +1,5 @@
 #map {
-  margin-top: 32px;
+  height: 100vh;
 }
 
 #show-map {
@@ -35,4 +35,9 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+@media(max-width: 992px) {
+  #map {
+    height: 80vh;
+  }
+}
 

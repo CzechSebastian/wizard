@@ -12,7 +12,7 @@ const categoryMessage = document.querySelector(".criteria-title")
 
 categoryChoices.forEach((category) => {
   category.addEventListener("click", (event) => {
-    district.classList.add("active")
+    $(district).slideDown();
 
     let count = document.querySelectorAll(".category-choice.active").length;
     const hasClassActive = category.classList.contains("active");
@@ -28,8 +28,10 @@ categoryChoices.forEach((category) => {
         categoryMessage.classList.remove("shake")
       }, 1000)
     }
+
     count = document.querySelectorAll(".category-choice.active").length;
     if (count === 0) {
+      $(district).slideUp();
       categoryMessage.innerHTML = "Select your 3 main criterias"
      } else if (count === 1) {
       categoryMessage.innerHTML = "You have 2 more criterias left"
