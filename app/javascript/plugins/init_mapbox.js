@@ -15,6 +15,7 @@ const initIndexMap = () => {
     center: [-73.61, 45.551],
     zoom: 9.5,
   });
+  map.scrollZoom.disable();
 
 
   document.getElementById('submit-to-fly').addEventListener('click', function () {

@@ -1,0 +1,18 @@
+<% @districts.last(3).each do |district| %>
+<div class="card-product" data-district-location="<%= district.location %>">
+  <div class="card-product-infos">
+    <h2><%= district[:name] %></h2>
+    <p>a trendy neighbourhood this is a place to live. known for dogs, food and buses</p>
+    <div class="scoreofcriterias">
+    <p class="score score-<%= district.get_color_score("restaurant_score") %> restaurant"><%= inline_svg "restaurant.svg", class: 'logo-icon' %></p>
+    <p class="score score-<%= district.get_color_score("school_score") %> school"><%= inline_svg "school.svg", class: 'logo-icon' %></p>
+    <p class="score score-<%= district.get_color_score("park_score") %> park"><%= inline_svg "leaf.svg", class: 'logo-icon' %></p>
+    <p class="score score-<%= district.get_color_score("bixi_score") %> bike"><%= inline_svg "bike.svg", class: 'logo-icon' %></p>
+    <p class="score score-<%= district.get_color_score("dog_score") %> dog"><%= inline_svg "dog.svg", class: 'logo-icon' %></p>
+    <p class="score score-<%# district.get_color_score("car_score") %> car"><%= inline_svg "car.svg", class: 'logo-icon' %></p>
+    <p class="score score-<%# district.get_color_score("family_score") %> family"><%= inline_svg "family.svg", class: 'logo-icon' %></p>
+    <p class="score score-<%= district.get_color_score("quiet_score") %> quiet"><%= inline_svg "sound.svg", class: 'logo-icon' %></p>
+    </div>
+  </div>
+</div>
+<% end %>

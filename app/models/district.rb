@@ -18,6 +18,34 @@ class District < ApplicationRecord
    return contains_point
  end
 
+ def get_color_score(score_type)
+  if score_type == "park_score"
+    score = self.park_score
+  elsif score_type == "school_score"
+    score = self.school_score
+  elsif score_type == "restaurant_score"
+    score = self.restaurant_score
+  elsif score_type == "bixi_score"
+    score = self.bixi_score
+  elsif score_type == "subway_score"
+    score = self.subway_score
+  elsif score_type == "dog_score"
+    score = self.dog_score
+  elsif score_type == "quiet_score"
+    score = self.quiet_score
+  end
+
+  if score > 4
+    color_score = "green"
+  elsif score < 4 && score >=3
+    color_score = "yellow"
+  else
+    color_score = "orange"
+  end
+
+  return color_score
+ end
+
  private
 
  def point_is_between_the_ys_of_the_line_segment?(point, a_point_on_polygon, trailing_point_on_polygon)

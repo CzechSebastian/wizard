@@ -12,7 +12,7 @@ document.getElementById('districts-card').innerHTML = "<%= j render 'card_top' %
 inputFlyBox = document.getElementById('fly-to')
 refreshFlyButton = document.getElementById('submit-to-fly')
 
-document.querySelectorAll(".card-trip").forEach((card) => {
+document.querySelectorAll(".card-product").forEach((card) => {
   card.addEventListener('click', () => {
     console.log(card)
     coordinatesFlyString = card.dataset.districtLocation
