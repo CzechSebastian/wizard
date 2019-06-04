@@ -579,10 +579,10 @@ end
 "=============================================================================================================================================================================================================================="
 
 District.all.each do |district|
-  set_restaurants_score(district)
-  set_schools_score(district)
-  set_subways_score(district)
-  set_parks_score(district)
+  # set_restaurants_score(district)
+  # set_schools_score(district)
+  # set_subways_score(district)
+  # set_parks_score(district)
   set_bikes_score(district)
   set_parkings_score(district)
   set_quiet_score(district)
