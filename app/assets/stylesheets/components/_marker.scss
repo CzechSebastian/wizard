@@ -255,3 +255,347 @@
     transform: translateY(0) rotate(45deg);
   }
 }
+
+.marker-bars .marker-item{
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 0% 50%;
+  background: #212121;
+  position: relative;
+  transform: rotate(45deg) !important;
+  top: -16px;
+  margin: -20px 0 0 -20px;
+  animation-name: bounce;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  font-size: 15px;
+  i {
+    color: white;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    transform: rotate(-45deg) !important;
+  }
+}
+@-moz-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@-o-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+
+.marker-bixis .marker-item{
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 0% 50%;
+  background: #b6b6b6;
+  position: relative;
+  transform: rotate(45deg) !important;
+  top: -16px;
+  margin: -20px 0 0 -20px;
+  animation-name: bounce;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  font-size: 15px;
+  i {
+    color: black;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    transform: rotate(-45deg) !important;
+  }
+}
+@-moz-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@-o-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+
+.marker-coffees .marker-item{
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 0% 50%;
+  background: #ee964b;
+  position: relative;
+  transform: rotate(45deg) !important;
+  top: -16px;
+  margin: -20px 0 0 -20px;
+  animation-name: bounce;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  font-size: 15px;
+  i {
+    color: white;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    transform: rotate(-45deg) !important;
+  }
+}
+@-moz-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@-o-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+
+.marker-gyms .marker-item{
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 0% 50%;
+  background: #FBFEF9;
+  position: relative;
+  transform: rotate(45deg) !important;
+  top: -16px;
+  margin: -20px 0 0 -20px;
+  animation-name: bounce;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  font-size: 15px;
+  i {
+    color: black;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    transform: rotate(-45deg) !important;
+  }
+}
+@-moz-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@-o-keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+@keyframes bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px) rotate(45deg);
+  }
+  80% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
