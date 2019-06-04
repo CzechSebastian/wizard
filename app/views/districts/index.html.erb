@@ -11,12 +11,17 @@
           ></div>
         </div>
         <div class="col-xl-4">
-          <div id="districts-card">
+          <div id="districts-card" style="display: none;">
           </div>
           <h2 class="criteria-title">select your 3 main criterias</h2>
           <div class="selection">
+
             <input type="text" id="coordinates-to-show" class="hidden">
             <button id="refresh-map" class="hidden"></button>
+
+            <input type="text" id="fly-to" class="hidden">
+            <button id="submit-to-fly" class="hidden"></button>
+
             <%= form_tag maps_path, method: :get, remote: true do %>
             <input type="hidden" name="criteria[]" value="">
             <div class="category-choices">

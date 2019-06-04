@@ -41,6 +41,7 @@ categoryChoices.forEach((category) => {
 
   })
 })
+
 //Button to top
 var btn = $('#button');
 

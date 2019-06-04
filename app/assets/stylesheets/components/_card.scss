@@ -1,15 +1,11 @@
 #districts-card{
   display: flex;
   justify-content: space-around;
-  max-height: 20vh;
+  height: 150px;
   overflow:scroll;
   overflow-y:hidden;
   overflow-x:hidden;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
   &.active {
-    visibility: visible;
     opacity: 1;
   }
 }
