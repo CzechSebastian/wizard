@@ -15,22 +15,37 @@
 		<!-- <button type="button" data-value="schools" class="btn-show-category"><p>HOUSES FOR SELL</p></button> -->
 	</div>
 
-	<div
-		class="map mr-4"
-		id="show-map"
-		style="width: 100%;
-		height: 500px;"
-		data-markers="<%= @markers.to_json %>"
-		data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-		data-center="<%= @district.location.to_json %>"
-		data-coordinates="<%= @district.coordinates.to_json %>"
-		data-restaurants="<%= @restaurant_coordinates.to_json %>"
-		data-schools="<%= @school_coordinates.to_json %>"
-		data-bars="<%= @bar_coordinates.to_json %>"
-		data-subways="<%= @subway_coordinates.to_json %>"
-    data-coffees="<%= @cafe_coordinates.to_json %>"
-    data-gyms="<%= @gym_coordinates.to_json %>"
-    data-bixis="<%= @bixi_coordinates.to_json %>"
-	>
+	<div class="w-100 position-relative">
+		<div
+			class="map mr-4"
+			id="show-map"
+			data-markers="<%= @markers.to_json %>"
+			data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+			data-center="<%= @district.location.to_json %>"
+			data-coordinates="<%= @district.coordinates.to_json %>"
+			data-restaurants="<%= @restaurant_coordinates.to_json %>"
+			data-schools="<%= @school_coordinates.to_json %>"
+			data-bars="<%= @bar_coordinates.to_json %>"
+			data-subways="<%= @subway_coordinates.to_json %>"
+	    data-coffees="<%= @cafe_coordinates.to_json %>"
+	    data-gyms="<%= @gym_coordinates.to_json %>"
+	    data-bixis="<%= @bixi_coordinates.to_json %>"
+		>
+		</div>
+
+		<div id="map-card">
+			<button class="map-btn btn btn-primary mb-4" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+			  <strong><%= @district.name %></strong>
+			</button>
+			<div class="collapse" id="collapseExample">
+			  <div class="card card-body" id="map-card-down">
+			    <% sorted_parks_score = @districts.sort_by{ |score| -score.park_score} %>
+			    <p>Park score <%= sorted = sorted_parks_score.find_index { |x| x.id  == @district.id } %>  / 91 </p>
+			  </div>
+			</div>
+		</div>
 	</div>
 </div>
+
+
+

@@ -4,6 +4,7 @@ class DistrictsController < ApplicationController
   end
 
   def show
+    @districts = District.all
     @district = District.find(params[:id])
 
   	if @district.raw_restaurant == nil
