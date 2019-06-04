@@ -19,26 +19,29 @@
 .btn-show-category {
 
     border-radius: 42px;
-    color: #9EADC8;
-    font-size: 45px; 
-    width: 80px;
-    height: 80px;
+    color: #585858;
+    font-size: 26px; 
+    width: 56px;
+    height: 56px;
     // height: 40px;
-    box-shadow: 8px 8px 15px -6px rgba(153,153,153,0.5);
+    box-shadow: 8px 8px 15px -6px rgba(153,153,153,0.3);
     display: flex;
     justify-content: center;
+    transition: 0.3s; 
 	&:focus {
 		outline: none;
 
 		// outline-offset: 0;
 	}
+  &:hover {
+    background-color: #4af2a1;
+  }
 
     p {
     	margin: 0;
 		font-weight: 500;
 		color: $secondary-color;
     }
-
 }
 
 .btn-show-category p {
