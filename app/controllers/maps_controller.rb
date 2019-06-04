@@ -62,6 +62,8 @@ class MapsController < ApplicationController
       end
     end
 
+    @color_score = "green"
+
     # # ONLY restaurants:
     # if params[:criteria].includes("restaurant")
 

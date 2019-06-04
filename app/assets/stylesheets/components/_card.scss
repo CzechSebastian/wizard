@@ -1,7 +1,10 @@
+$green: #5AF47B;
+$yellow: #F2EF54;
+$orange: #F84700;
+$med-orange: #F4945B;
+
 #districts-card{
-  display: flex;
-  justify-content: space-around;
-  height: 150px;
+  height:340px;
   overflow:scroll;
   overflow-y:hidden;
   overflow-x:hidden;
@@ -60,12 +63,75 @@
 }
 
 .score {
-  height: 40px;
+  height:40px;
   width: 40px;
   border-radius: 50%;
-  background-color: #5CBCF7;
   position: relative;
   left: 25px;
   top: 10px;
   padding: 8px;
+}
+
+.score-green{
+  background-color: $green;
+}
+
+.score-orange{
+  background-color: $orange;
+}
+
+.score-yellow{
+  background-color: $yellow;
+}
+
+
+.color-good {
+  background-color: $orange;
+  }
+
+.card-product {
+  position: relative;
+  left: 5px;
+  margin-top: 12px;
+  overflow: hidden;
+  height: 100px;
+  width: 95%;
+  background: white;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.card-product p {
+  position: relative;
+  bottom: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+.scoreofcriterias {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  position: relative;
+  right: 30px;
+  bottom: 16px;
 }
