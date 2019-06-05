@@ -15,7 +15,6 @@
 }
 
 .category-choice {
-  //margin: 3% 10% 2% 0px;
   background: #b6bab8;
   padding: 20px;
   width: 110px;
@@ -28,22 +27,18 @@
   svg {
     fill: white
   }
-
   &:hover {
-    //border: solid 4px (rgba(47, 64, 196, 1.00));
-    transform: scale(1.1);
-
+    filter: brightness(80%);
   }
-
   &.active {
     opacity:1;
     background-color: #8cf7a2;
-
     svg {
       fill: #686868;
     }
   }
 }
+
 .selection{
   margin: 0 20px;
 }

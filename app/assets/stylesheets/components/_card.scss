@@ -96,6 +96,11 @@ $med-orange: #F4945B;
   display: flex;
   align-items: center;
   margin: 12px 10px;
+  transition: 0.4s;
+  &:hover {
+    transform: scale(0.95);
+    background-color:#F3F3F3;
+  }
 }
 
 .card-product img {
@@ -107,16 +112,13 @@ $med-orange: #F4945B;
 .card-product h2 {
   font-size: 16px;
   font-weight: bold;
-  margin-top: 8px;
+  margin-top: 20px;
 }
 
 .card-product p {
-  position: relative;
-  bottom: 8px;
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
-  margin-bottom: 0;
 }
 
 .card-product .card-product-infos {
