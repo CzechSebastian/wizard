@@ -34,7 +34,7 @@ categoryChoices.forEach((category) => {
         }
       }, 50)
     } else {
-      categoryMessage.innerHTML = "Woo fuckerssss!"
+      categoryMessage.innerHTML = "Too many picked!"
       categoryMessage.classList.add("shake")
       setTimeout(() => {
         categoryMessage.classList.remove("shake")
