@@ -587,6 +587,7 @@ District.all.each do |district|
   # set_parkings_score(district)
   # set_quiet_score(district)
   set_dog_score(district)
+
   # set_bars_score(district)
   # set_cafes_score(district)
   # set_gyms_score(district)

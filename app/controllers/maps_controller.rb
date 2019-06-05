@@ -48,8 +48,8 @@ class MapsController < ApplicationController
       end
     end
 
-    if params[:criteria].include? "parking"
-      binding.pry
+    if params[:criteria].include? "car"
+
       @districts = @districts.each do |district|
         district.average = district.average += district.parking_score
         district.average
