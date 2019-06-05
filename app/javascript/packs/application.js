@@ -19,27 +19,27 @@ categoryChoices.forEach((category) => {
 
     if (count < 3 || hasClassActive) {
       category.classList.toggle("active")
+      count = document.querySelectorAll(".category-choice.active").length;
       setTimeout(() => {
         criteria.click();
-      }, 100)
-    } else{
+        if (count === 0) {
+          $(district).slideUp();
+          categoryMessage.innerHTML = "Select your 3 main criterias"
+        }else if (count === 1) {
+          categoryMessage.innerHTML = "You have 2 more criterias left"
+        }else if (count === 2) {
+          categoryMessage.innerHTML = "You have 1 more criteria left"
+        }else if (count === 3) {
+          categoryMessage.innerHTML = "We've summed up the best districts for you!"
+        }
+      }, 50)
+    } else {
+      categoryMessage.innerHTML = "Too many picked!"
       categoryMessage.classList.add("shake")
       setTimeout(() => {
         categoryMessage.classList.remove("shake")
       }, 1000)
     }
-
-    count = document.querySelectorAll(".category-choice.active").length;
-    if (count === 0) {
-      $(district).slideUp();
-      categoryMessage.innerHTML = "Select your 3 main criterias"
-     } else if (count === 1) {
-      categoryMessage.innerHTML = "You have 2 more criterias left"
-     } else if (count === 2) {
-      categoryMessage.innerHTML = "You have 1 more criteria left"
-     }else if (count === 3) {
-      categoryMessage.innerHTML = "We've summed up the best districts for you!"
-     }
 
   })
 })
