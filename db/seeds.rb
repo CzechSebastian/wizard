@@ -177,16 +177,16 @@ def set_subways_score(district)
       district.contains_point?([(subway["geometry"]["location"]["lng"]).to_f,(subway["geometry"]["location"]["lat"]).to_f])
     end
 
-    if valid_subways.length == 0
-      score = 0
+    if valid_subways.length >= 2
+      score = 5
       district.update!(subway_score: score)
       district.update!(subway_raw: valid_subways)
     elsif valid_subways.length == 1
       score = 3
       district.update!(subway_score: score)
       district.update!(subway_raw: valid_subways)
-    elsif valid_subways.length >= 2
-      score = 5
+    elsif valid_subways.length == 0
+      score = 0
       district.update!(subway_score: score)
       district.update!(subway_raw: valid_subways)
     end
@@ -579,15 +579,15 @@ end
 "=============================================================================================================================================================================================================================="
 
 District.all.each do |district|
-  # set_restaurants_score(district)
-  # set_schools_score(district)
+  set_restaurants_score(district)
+  set_schools_score(district)
   set_subways_score(district)
-  # set_parks_score(district)
-  # set_bikes_score(district)
-  # set_parkings_score(district)
-  # set_quiet_score(district)
-  # set_dog_score(district)
-  # set_bars_score(district)
-  # set_cafes_score(district)
-  # set_gyms_score(district)
+  set_parks_score(district)
+  set_bikes_score(district)
+  set_parkings_score(district)
+  set_quiet_score(district)
+  set_dog_score(district)
+  set_bars_score(district)
+  set_cafes_score(district)
+  set_gyms_score(district)
 end

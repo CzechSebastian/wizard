@@ -1,0 +1,34 @@
+h1.testimonials-header{
+    font-family: helvetica, sans-serif;
+    font-size: 18pt;
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-weight: normal;
+    padding: 6px;
+}
+section#home-reviews{
+  margin: 50px 6px 70px 6px;
+  padding: 100px 0;
+  font-family: helvetica, sans-serif;
+    color: #5d564f;
+    background: #7DCDF6;
+    opacity: 0.6;;
+}
+section#home-reviews h2{
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+.fa-quote-left{
+  padding-right: 10px;
+}
+.fa-quote-right{
+  padding-left: 10px;
+}
+section#home-reviews p{
+  font-size: 13pt;
+}
+.stars{
+  color: #3EF49E;
+  opacity:1;
+}
