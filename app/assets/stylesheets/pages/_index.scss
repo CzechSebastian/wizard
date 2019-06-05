@@ -3,6 +3,13 @@
 @import "login";
 @import "landing";
 
+body {
+  background-color: white;
+}
+.map-display{
+  padding: 0;
+}
+
 .banner {
   display: flex;
   justify-content: center;
@@ -33,9 +40,6 @@ h1 {
   margin: 0 auto;
 }
 
-body {
-  background-color: white;
-}
 .row {
   height: 120px;
 }

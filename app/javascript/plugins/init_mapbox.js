@@ -12,10 +12,9 @@ const initIndexMap = () => {
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10',
-    center: [-73.61, 45.551],
-    zoom: 9.5,
+    center: [-73.73, 45.551],
+    zoom: 10.4,
   });
-  map.scrollZoom.disable();
 
 
   document.getElementById('submit-to-fly').addEventListener('click', function () {
@@ -23,7 +22,7 @@ const initIndexMap = () => {
     districtCenter = JSON.parse(districtCenter.replace(/&quot;/g,'"'));
     map.flyTo({
       center: districtCenter,
-      zoom: 12.3
+      zoom: 13.4
     });
   });
 
@@ -58,7 +57,8 @@ const initIndexMap = () => {
               'data': {
                 'type': 'Feature',
                 'properties': {
-                  "name": polygon["name"]
+                  "name": polygon["name"],
+                  "description": "<strong>Make it Mount Pleasant</strong><p>Make it Mount Pleasant is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>"
                 },
                 'geometry': {
                   'type': 'Polygon',
@@ -68,8 +68,9 @@ const initIndexMap = () => {
             },
             'layout': {},
             'paint': {
-              'fill-color': '#5CBCF7',
-              'fill-opacity': 0.7,
+              'fill-color': 'red',
+              'fill-opacity': 0.4,
+              'fill-outline-color': 'black'
             }
           })
           map.on('click', `montreal_${index}`, function (e) {
