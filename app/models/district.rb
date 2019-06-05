@@ -1,7 +1,7 @@
 class District < ApplicationRecord
-	def contains_point?(point)
+  def contains_point?(point)
 
-		polygon = self.coordinates
+  polygon = self.coordinates
    contains_point = false
    i = -1
    j = polygon.size - 1
@@ -17,15 +17,14 @@ class District < ApplicationRecord
    end
    return contains_point
  end
- 
- def set_score(score_type)
-    sorted_score = District.all.sort_by{ |district| self[score_type]  }
-    sorted = sorted_score.find_index { |x| x.id  == self.id }
-    District.count - sorted 
- end
 
+def set_score(score_type)
+  sorted_score = District.all.sort_by { |district| self[score_type] }
+  sorted = sorted_score.find_index { |x| x.id == self.id }
+  District.count - sorted
+end
 
- def get_color_score(score_type)
+def get_color_score(score_type)
   if score_type == "park_score"
     score = self.park_score
   elsif score_type == "school_score"
@@ -40,28 +39,29 @@ class District < ApplicationRecord
     score = self.dog_score
   elsif score_type == "quiet_score"
     score = self.quiet_score
+  elsif score_type == "parking_score"
+    score = self.parking_score
   end
 
   if score > 4
     color_score = "green"
-  elsif score < 4 && score >=3
+  elsif score <= 4 && score > 1
     color_score = "yellow"
   else
     color_score = "orange"
   end
-
   return color_score
- end
+end
 
- private
+private
 
- def point_is_between_the_ys_of_the_line_segment?(point, a_point_on_polygon, trailing_point_on_polygon)
-   (a_point_on_polygon[1] <= point[1] && point[1] < trailing_point_on_polygon[1]) ||
-   (trailing_point_on_polygon[1] <= point[1] && point[1] < a_point_on_polygon[1])
- end
+def point_is_between_the_ys_of_the_line_segment?(point, a_point_on_polygon, trailing_point_on_polygon)
+ (a_point_on_polygon[1] <= point[1] && point[1] < trailing_point_on_polygon[1]) ||
+ (trailing_point_on_polygon[1] <= point[1] && point[1] < a_point_on_polygon[1])
+end
 
- def ray_crosses_through_line_segment?(point, a_point_on_polygon, trailing_point_on_polygon)
-   (point[0] < (trailing_point_on_polygon[0] - a_point_on_polygon[0]) * (point[1] - a_point_on_polygon[1]) /
-    (trailing_point_on_polygon[1] - a_point_on_polygon[1]) + a_point_on_polygon[0])
- end
+def ray_crosses_through_line_segment?(point, a_point_on_polygon, trailing_point_on_polygon)
+ (point[0] < (trailing_point_on_polygon[0] - a_point_on_polygon[0]) * (point[1] - a_point_on_polygon[1]) /
+  (trailing_point_on_polygon[1] - a_point_on_polygon[1]) + a_point_on_polygon[0])
+end
 end
