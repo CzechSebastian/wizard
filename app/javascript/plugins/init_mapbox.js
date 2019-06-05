@@ -151,7 +151,7 @@ const initShowMap = () => {
       center: center,
       zoom: 13,
       attributionControl: false,
-      bearing: -45
+      bearing: -56
     });
 
     map.on('load', function() {

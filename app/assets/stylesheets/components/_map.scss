@@ -24,6 +24,8 @@
 #map-card-down {
 	min-width: 200px;
 	min-height: 200px;
+	border-radius: 16px;
+	box-shadow: 8px 8px 15px -6px rgba(153,153,153,0.5);
 }
 
 .mapboxgl-popup {
