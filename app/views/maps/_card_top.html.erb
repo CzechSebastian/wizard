@@ -10,7 +10,7 @@
     <p class="score score-<%= district.get_color_score("bixi_score") %> bike"><%= inline_svg "bike.svg", class: 'logo-icon' %></p>
     <p class="score score-<%= district.get_color_score("dog_score") %> dog"><%= inline_svg "dog.svg", class: 'logo-icon' %></p>
     <p class="score score-<%# district.get_color_score("car_score") %> car"><%= inline_svg "car.svg", class: 'logo-icon' %></p>
-    <p class="score score-<%# district.get_color_score("family_score") %> family"><%= inline_svg "family.svg", class: 'logo-icon' %></p>
+    <p class="score score-<% district.get_color_score("subway_score") %> subway"><%= inline_svg "subway.svg", class: 'logo-icon' %></p>
     <p class="score score-<%= district.get_color_score("quiet_score") %> quiet"><%= inline_svg "sound.svg", class: 'logo-icon' %></p>
     </div>
   </div>
