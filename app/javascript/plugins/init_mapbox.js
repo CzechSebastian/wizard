@@ -175,15 +175,6 @@ const initShowMap = () => {
         }
       });
     });
-
-    // map.addControl(new MapboxGeocoder({
-    //   accessToken: mapboxgl.accessToken,
-    //   marker: {
-    //   },
-    //   mapboxgl: mapboxgl
-    // }));
-
-
   }
 };
 
@@ -231,7 +222,6 @@ const triggerMapRefresh = () => {
 
 document.querySelectorAll(".btn-show-category").forEach((element) => {
   element.addEventListener("click", (event) => {
-    // console.log(element.getAttribute("data-value"))
 
     handleFilters(element.getAttribute("data-value"));
     deleteAllMarkers();
@@ -247,8 +237,6 @@ const deleteAllMarkers = () => {
   }
 });
 }
-
-
 
 const initMapbox = () => {
   initIndexMap()

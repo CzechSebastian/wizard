@@ -35,20 +35,20 @@ class MapsController < ApplicationController
       end
     end
 
-    if params[:criteria].include? "subway_station"
+    if params[:criteria].include? "subway"
       @districts = @districts.each do |district|
         district.average += district.subway_score
         district.average
       end
     end
-    if params[:criteria].include? "bixi"
+    if params[:criteria].include? "bike"
       @districts = @districts.each do |district|
         district.average = district.average += district.bixi_score
         district.average
       end
     end
 
-    if params[:criteria].include? "parking"
+    if params[:criteria].include? "car"
       @districts = @districts.each do |district|
         district.average = district.average += district.parking_score
         district.average

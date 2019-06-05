@@ -446,15 +446,15 @@ def set_dog_score(district)
       score = 0
       district.update!(dog_score: score)
       district.update!(dog_raw: valid_pet_stores)
-    elsif valid_pet_stores.length > 3
+    elsif valid_pet_stores.length > 2
       score = 5
       district.update!(dog_score: score)
       district.update!(dog_raw: valid_pet_stores)
-    elsif valid_pet_stores.length > 2
+    elsif valid_pet_stores.length == 2
       score = 4
       district.update!(dog_score: score)
       district.update!(dog_raw: valid_pet_stores)
-    elsif valid_pet_stores.length > 1
+    elsif valid_pet_stores.length == 1
       score = 3
       district.update!(dog_score: score)
       district.update!(dog_raw: valid_pet_stores)
@@ -579,15 +579,15 @@ end
 "=============================================================================================================================================================================================================================="
 
 District.all.each do |district|
-  set_restaurants_score(district)
-  set_schools_score(district)
-  set_subways_score(district)
-  set_parks_score(district)
-  set_bikes_score(district)
-  set_parkings_score(district)
-  set_quiet_score(district)
-  set_dog_score(district)
-  set_bars_score(district)
-  set_cafes_score(district)
-  set_gyms_score(district)
+  # set_restaurants_score(district)
+  # set_schools_score(district)
+  # set_subways_score(district)
+  # set_parks_score(district)
+  # set_bikes_score(district)
+  # set_parkings_score(district)
+  # set_quiet_score(district)
+   set_dog_score(district)
+  # set_bars_score(district)
+  # set_cafes_score(district)
+  # set_gyms_score(district)
 end
