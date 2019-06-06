@@ -8,13 +8,17 @@ class DistrictsController < ApplicationController
     @district = District.find(params[:id])
 
   	if @district.raw_restaurant == nil
-  		@restaurant_coordinates = []
+  		 @restaurant_coordinates = []
   	else
-  		@restaurant_coordinates = @district.raw_restaurant.map do |restaurant_hash|
+  		 @restaurant_coordinates = @district.raw_restaurant.map do |restaurant_hash|
+        if !restaurant_hash["photos"].nil?
+          reference = restaurant_hash["photos"][0]["photo_reference"]
+          photo_url = "https://maps.googleapis.com/maps/api/place/photo?photoreference=#{reference}&maxwidth=400&key=#{ENV["GOOGLE_API_KEY"]}"
+        end
         {
           lat: restaurant_hash["geometry"]["location"]["lat"],
           lng: restaurant_hash["geometry"]["location"]["lng"],
-          infoWindow: render_to_string(partial: "infowindow", locals: { form_data: restaurant_hash, category: "restaurant" }),
+          infoWindow: render_to_string(partial: "infowindow", locals: { form_data: restaurant_hash, category: "restaurant", photo_url: photo_url }),
           category: "restaurants"
         }
 			end

@@ -1,0 +1,54 @@
+#testimonials{
+  background-color: white;
+}
+
+.testimonial-text{
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.testimonial-image{
+  border-radius: 50%;
+  width: 10%;
+  margin: 20px;
+}
+
+#press{
+  background-color: #ef8172;
+  padding-bottom: 3%;
+}
+
+.press-logo{
+  width: 15%;
+  margin:20px 20px 50px;
+}
+
+.image-review {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+
+
+.carousel-inner {
+  margin: auto;
+  width: 75%;
+}
+
+.review-cards {
+  padding-top: 16px;
+  width: 100%;
+   display: flex;
+  justify-content: space-around;
+}
+
+.review-card {
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #686868;
+  width: 400px;
+}
+
+.carousel-slide {
+  margin-top: 32px;
+}

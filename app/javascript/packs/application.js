@@ -19,43 +19,43 @@ categoryChoices.forEach((category) => {
 
     if (count < 3 || hasClassActive) {
       category.classList.toggle("active")
+      count = document.querySelectorAll(".category-choice.active").length;
       setTimeout(() => {
         criteria.click();
-      }, 100)
-    } else{
+        if (count === 0) {
+          $(district).slideUp();
+          categoryMessage.innerHTML = "Select your 3 main criterias"
+        }else if (count === 1) {
+          categoryMessage.innerHTML = "You have 2 more criterias left"
+        }else if (count === 2) {
+          categoryMessage.innerHTML = "You have 1 more criteria left"
+        }else if (count === 3) {
+          categoryMessage.innerHTML = "We've summed up the best districts!"
+        }
+      }, 50)
+    } else {
+      categoryMessage.innerHTML = "Too many picked!"
       categoryMessage.classList.add("shake")
       setTimeout(() => {
         categoryMessage.classList.remove("shake")
       }, 1000)
     }
 
-    count = document.querySelectorAll(".category-choice.active").length;
-    if (count === 0) {
-      $(district).slideUp();
-      categoryMessage.innerHTML = "Select your 3 main criterias"
-     } else if (count === 1) {
-      categoryMessage.innerHTML = "You have 2 more criterias left"
-     } else if (count === 2) {
-      categoryMessage.innerHTML = "You have 1 more criteria left"
-     }else if (count === 3) {
-      categoryMessage.innerHTML = "We've summed up the best districts for you!"
-     }
-
   })
 })
 
 //Button to top
-var btn = $('#button');
+// var btn = $('#scroll-button');
 
-$(window).scroll(function() {
-  if ($(window).scrollTop() > 300) {
-    btn.addClass('show');
-  } else {
-    btn.removeClass('show');
-  }
-});
+// $(window).scroll(function() {
+//   if ($(window).scrollTop() > 300) {
+//     btn.addClass('show');
+//   } else {
+//     btn.removeClass('show');
+//   }
+// });
 
-btn.on('click', function(e) {
-  e.preventDefault();
-  $('html, body').animate({scrollTop:0}, '300');
-});
+// btn.on('click', function(e) {
+//   e.preventDefault();
+//   $('html, body').animate({scrollTop:0}, '300');
+// });

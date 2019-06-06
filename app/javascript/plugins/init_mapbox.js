@@ -12,10 +12,9 @@ const initIndexMap = () => {
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10',
-    center: [-73.61, 45.551],
-    zoom: 9.5,
+    center: [-73.73, 45.551],
+    zoom: 10.4,
   });
-  map.scrollZoom.disable();
 
 
   document.getElementById('submit-to-fly').addEventListener('click', function () {
@@ -23,7 +22,7 @@ const initIndexMap = () => {
     districtCenter = JSON.parse(districtCenter.replace(/&quot;/g,'"'));
     map.flyTo({
       center: districtCenter,
-      zoom: 12.3
+      zoom: 13.4
     });
   });
 
@@ -68,10 +67,12 @@ const initIndexMap = () => {
             },
             'layout': {},
             'paint': {
-              'fill-color': '#5CBCF7',
-              'fill-opacity': 0.7,
+              'fill-color': 'red',
+              'fill-opacity': 0.4,
+              'fill-outline-color': 'black'
             }
           })
+
           map.on('click', `montreal_${index}`, function (e) {
             console.log(e)
             new mapboxgl.Popup()
@@ -175,15 +176,6 @@ const initShowMap = () => {
         }
       });
     });
-
-    // map.addControl(new MapboxGeocoder({
-    //   accessToken: mapboxgl.accessToken,
-    //   marker: {
-    //   },
-    //   mapboxgl: mapboxgl
-    // }));
-
-
   }
 };
 
@@ -231,7 +223,6 @@ const triggerMapRefresh = () => {
 
 document.querySelectorAll(".btn-show-category").forEach((element) => {
   element.addEventListener("click", (event) => {
-    // console.log(element.getAttribute("data-value"))
 
     handleFilters(element.getAttribute("data-value"));
     deleteAllMarkers();
@@ -247,8 +238,6 @@ const deleteAllMarkers = () => {
   }
 });
 }
-
-
 
 const initMapbox = () => {
   initIndexMap()
