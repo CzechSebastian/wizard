@@ -29,6 +29,9 @@
   height: 70px;
 }
 
+.reviewers-photos {
+  margin-bottom:16px;
+}
 
 .carousel-inner {
   margin: auto;
@@ -38,15 +41,19 @@
 .review-cards {
   padding-top: 16px;
   width: 100%;
-   display: flex;
   justify-content: space-around;
 }
 
 .review-card {
-  padding: 16px;
-  border-radius: 6px;
-  border: 1px solid #686868;
-  width: 400px;
+  color: #828282;
+  padding: 48px;
+  margin-bottom: 32px;
+  border: 2px solid #3EF49E;
+  width: 100%;
+}
+
+.testimonial-text {
+  color: #828282;
 }
 
 .carousel-slide {

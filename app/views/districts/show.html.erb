@@ -1,120 +1,131 @@
-<%= render 'shared/navbar' %>
-<div class="d-flex justify-content-center">
+<div class="container map-display">
+  <div class="row">
+    <div class="col-lg-5 tab-side">
+<div class="d-flex justify-content-center title-show">
 	<h1 class="title-show"><strong><%= @district.name %></strong></h1>
 </div>
-<div class="d-flex justify-content-between btn-container">
-	<div class="d-flex flex-column justify-content-between mr-4">
-		<button type="button" data-value="restaurants" id="restaurant-btn" class="btn-show-category"><i class="fas fa-utensils"></i></button>
-		<button type="button" data-value="bars" class="btn-show-category"><i class="fas fa-beer"></i></button>
-		<button type="button" data-value="schools" id="school-btn" class="btn-show-category"><i class="fas fa-graduation-cap"></i></button>
-		<button type="button" data-value="subways" id="subway-btn" class="btn-show-category"><i class="fas fa-subway"></i></button>
-		<button type="button" data-value="bixis" id="bixi-btn" class="btn-show-category"><i class="fas fa-bicycle"></i></button>
-		<button type="button" data-value="gyms" id="gym-btn" class="btn-show-category"><i class="fas fa-dumbbell"></i></button>
-		<button type="button" data-value="coffees" id="coffee-btn" class="btn-show-category"><i class="fas fa-coffee"></i></button>
-	</div>
+<!-- ========================================================== Tab section-->
+<div class="container d-flex justify-content-around">
+  <ul class="nav tabs-underlined" id="myTab" role="tablist">
+    <li>
+      <a class=" active tab-underlined" id="review-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">REVIEWS</a>
+    </li>
+    <li>
+      <a class=" tab-underlined" id="photos-tab" data-toggle="tab" href="#booking" role="tab" aria-controls="booking" aria-selected="false">PHOTOS</a>
+    </li>
+    <li>
+      <a class=" tab-underlined" id="suggestions.html.erb-tab" data-toggle="tab" href="#favorites" role="tab" aria-controls="favorites" aria-selected="false">SUGGESTIONS</a>
+    </li>
+  </ul>
+</div>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="review-tab">
+    <%= render 'reviews'  %>
+  </div>
+  <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="photos-tab">
+    <%= render 'photos'  %>
+  </div>
+  <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="suggestions-tab">
+    <%= render 'suggestions'  %>
+  </div>
+</div>
 
+
+</div>
+  <div class="col-lg-7 map-side">
+    <div class="mapandicons" >
+<!-- //==================================================================================  Icons-->
+        <div class="d-flex flex-column justify-content-between mr-4 icons-side">
+          <button type="button" data-value="restaurants" id="restaurant-btn" class="btn-show-category"><i class="fas fa-utensils"></i></button>
+          <button type="button" data-value="bars" class="btn-show-category"><i class="fas fa-beer"></i></button>
+          <button type="button" data-value="schools" id="school-btn" class="btn-show-category"><i class="fas fa-graduation-cap"></i></button>
+          <button type="button" data-value="subways" id="subway-btn" class="btn-show-category"><i class="fas fa-subway"></i></button>
+          <button type="button" data-value="bixis" id="bixi-btn" class="btn-show-category"><i class="fas fa-bicycle"></i></button>
+          <button type="button" data-value="gyms" id="gym-btn" class="btn-show-category"><i class="fas fa-dumbbell"></i></button>
+          <button type="button" data-value="coffees" id="coffee-btn" class="btn-show-category"><i class="fas fa-coffee"></i></button>
+        </div>
+<!-- ============================================================================ Map display -->
+      <div
+      class="map mr-4"
+      id="show-map"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-center="<%= @district.location.to_json %>"
+      data-coordinates="<%= @district.coordinates.to_json %>"
+      data-restaurants="<%= @restaurant_coordinates.to_json %>"
+      data-schools="<%= @school_coordinates.to_json %>"
+      data-bars="<%= @bar_coordinates.to_json %>"
+      data-subways="<%= @subway_coordinates.to_json %>"
+      data-coffees="<%= @cafe_coordinates.to_json %>"
+      data-gyms="<%= @gym_coordinates.to_json %>"
+      data-bixis="<%= @bixi_coordinates.to_json %>"
+      >
+      </div>
+    </div>
 	<div class="w-100 position-relative">
-		<div
-			class="map mr-4"
-			id="show-map"
-			data-markers="<%= @markers.to_json %>"
-			data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-			data-center="<%= @district.location.to_json %>"
-			data-coordinates="<%= @district.coordinates.to_json %>"
-			data-restaurants="<%= @restaurant_coordinates.to_json %>"
-			data-schools="<%= @school_coordinates.to_json %>"
-			data-bars="<%= @bar_coordinates.to_json %>"
-			data-subways="<%= @subway_coordinates.to_json %>"
-	    data-coffees="<%= @cafe_coordinates.to_json %>"
-	    data-gyms="<%= @gym_coordinates.to_json %>"
-	    data-bixis="<%= @bixi_coordinates.to_json %>"
-		>
-		</div>
-
-		<div id="map-card" width="400px">
-			<button class="map-btn btn btn-primary mb-4" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="button-show">
-			  <p>Summary of <strong><%= @district.name %></strong></p>
-			</button>
-			<div class="collapse" id="collapseExample">
-			  <div class="card card-body width=" id="map-card-down">
-			  	<p>- Median age: <strong><%= @district.age %> years old</strong></p>
-          <p>- Language: <strong><%= @district.language %></strong></p>
-          <p>- Average rent price: <strong><%= @district.rent_rate %> $</strong></p>
-          <p>- Crime rate: <strong><%= @district.crime_rate %></strong></p>
-			  </div>
-			</div>
-		</div>
-	</div>
+  <div
+  class="map mr-4"
+  id="show-map"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  data-center="<%= @district.location.to_json %>"
+  data-coordinates="<%= @district.coordinates.to_json %>"
+  data-restaurants="<%= @restaurant_coordinates.to_json %>"
+  data-schools="<%= @school_coordinates.to_json %>"
+  data-bars="<%= @bar_coordinates.to_json %>"
+  data-subways="<%= @subway_coordinates.to_json %>"
+  data-coffees="<%= @cafe_coordinates.to_json %>"
+  data-gyms="<%= @gym_coordinates.to_json %>"
+  data-bixis="<%= @bixi_coordinates.to_json %>"
+  >
+  </div>
 </div>
 
-
-<p>Other districts you may like...</p>
-
-<% unless cookies[:top_districts].nil? %>
-	<% districts = JSON.parse(cookies[:top_districts]).map { |id| District.find(id) } %>
-	<% districts.each do |district| %>
-		<div class="card-map">
-			<img class="image-map" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-73.572832,45.485027,13,-56,0/600x600?access_token=pk.eyJ1IjoiYmVuamFtaW5kb21pbmd1ZSIsImEiOiJjandmcTJrcHMweTIzNDNrZHdxMHppajh2In0._lnGrzv4VjfVS4ehUHj3Vw" alt="">
-			<div class="card-map-infos">
-				<p>Montréal</p>
-				<h2><%= district.name %></h2> 
-			</div>
-		</div>
-	<% end %>
-<% end %>
-
-<div class="colored-section" id="testimonials">
-
-  <div id="testimonial-carousel" class="carousel-slide" data-ride="false">
-
-  <div class="text-center">
-  <h2>Neighbourhood's reviews</h2>
-</div>
-    <div class="carousel-inner">
-
-      <div class="carousel-item active container-fluid">
-
-        <div class="review-cards">
-
-          <div class="review-card">
-              <div class="text-center">
-                <%= image_tag "martin.jpg", class:"image-review"  %>
-              </div>
-            <h2 class="testimonial-text">I love the proximity with everything, it is my favorite neighbourhood in Montreal. It's warm atmosphere makes you feel good.</h2>
-          </div>
-
-          <div class="review-card">
-              <div class="text-center">
-                <%= image_tag "seb.jpg", class:"image-review" %>
-              </div>
-            <h2 class="testimonial-text">Little known to tourists, this area is really nice.So many activities for the family ,very good restaurants,local food stands</h2>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="carousel-item container-fluid ">
-        <div class="review-cards">
-
-          <div class="review-card">
-              <div class="text-center">
-                <%= image_tag "stephane.jpeg", class:"image-review"  %>
-              </div>
-            <h2 class="testimonial-text">With some of the best cafes, restaurants, bars and local independent shops, it is a must for anyone living or visiting Montreal.</h2>
-          </div>
-
-          <div class="review-card">
-              <div class="text-center">
-                <%= image_tag "steph.jpg", class:"image-review" %>
-              </div>
-            <h2 class="testimonial-text"> Fun place for strolling with a good selection of coffe shops and eateries, book stores and funky resale shops. The perpendicular streets are really quiet</h2>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
-    <%= render 'shared/footer' %>
+
+<!-- ============================================================================== END-->
+
+
+
+<!-- //=============================================================================   Map markers-->
+<!-- //======================================================================== Window on map
+<div id="map-card" width="400px">
+ <button class="map-btn btn btn-primary mb-4" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="button-show">
+   <p>Summary of <strong><%= @district.name %></strong></p>
+ </button>
+ <div class="collapse" id="collapseExample">
+   <div class="card card-body width=" id="map-card-down">
+    <p>- Median age: <strong><%= @district.age %> years old</strong></p>
+    <p>- Language: <strong><%= @district.language %></strong></p>
+    <p>- Average rent price: <strong><%= @district.rent_rate %> $</strong></p>
+    <p>- Crime rate: <strong><%= @district.crime_rate %></strong></p>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- //======================================================================== Recomendations
+--><h3 class="subtitle-text" >Other districts you may like...</h3>
+<div class="recomendation">
+  <% unless session[:top_districts].nil? %>
+  <% districts = session[:top_districts].map { |id| District.find(id) } %>
+  <% districts.each do |district| %>
+  <div class="card-map">
+   <img class="image-map" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-73.572832,45.485027,13,-56,0/600x600?access_token=pk.eyJ1IjoiYmVuamFtaW5kb21pbmd1ZSIsImEiOiJjandmcTJrcHMweTIzNDNrZHdxMHppajh2In0._lnGrzv4VjfVS4ehUHj3Vw" alt="">
+   <div class="card-map-infos">
+    <p>Montréal</p>
+    <h2><%= district.name %></h2>
+  </div>
+
+  <% end %>
+  <% end %>
+</div>
+</div>
+
+<%= render 'shared/footer' %>
 
 
 

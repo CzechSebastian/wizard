@@ -4,9 +4,9 @@
 
 #show-map {
 	// position: absolute;
-	border-radius: 18px;
+	border-radius: 4px;
 	width: 100%;
-	height: 500px
+  height: 100vh;
  }
 
 #map-card {
@@ -47,8 +47,20 @@
 
 .title-show {
 font-family: roboto;
+margin-bottom: 32px;
 }
 
 .text-center {
   font-family: roboto;
+}
+
+.mapandicons{
+  display: flex;
+}
+
+.icons-side {
+    position: relative;
+    left: 75px;
+    z-index: 1;
+    padding: 32px 0 32px 0;
 }
