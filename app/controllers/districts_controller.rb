@@ -6,6 +6,9 @@ class DistrictsController < ApplicationController
   def show
     @districts = District.all
     @district = District.find(params[:id])
+    session[:top_districts] = session[:top_districts].reject { |id| id.to_i == params[:id].to_i }.reverse.first(3)
+
+
 
   	if @district.raw_restaurant == nil
   		 @restaurant_coordinates = []

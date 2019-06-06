@@ -2,10 +2,10 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  width:230px;
+  width:30%;
   margin-top: 32px;
   height: 275px;
-  border-radius: 16px;
+  border-radius: 4px;
   position: relative;
 }
 
@@ -31,6 +31,10 @@
   text-shadow: 0 0 3px rgba(0,0,0,0.6);
 }
 
+
+.card-map-infos {
+  margin: 32px 0 032px 0;
+}
 
 .card-map .card-map-infos {
   padding: 16px;
