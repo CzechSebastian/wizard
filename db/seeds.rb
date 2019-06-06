@@ -264,7 +264,7 @@ def set_bikes_score(district)
   bixis = []
 
   csv_options = { col_sep: ',', headers: :first_row }
-  filepath    = 'stations_2019.csv'
+  filepath    = 'Stations_2019.csv'
 
   CSV.foreach(filepath, csv_options) do |row|
     bixis << row
