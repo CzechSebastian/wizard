@@ -1,0 +1,5 @@
+meta_product_name: "Wizar"
+meta_title: "Wizar - Every neighbourhood has its own personality, find yours."
+meta_description: "With Wizar, find the best district in Montreal that fit to your personality"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards

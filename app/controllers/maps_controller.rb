@@ -71,7 +71,7 @@ class MapsController < ApplicationController
     end
 
     @districts = @districts.sort_by { |district| district.average }
-    @districts = @districts.last(6)
+    @districts = @districts.last(8)
     @districts = [] if params[:criteria].count <= 1
 
     respond_to do |format|
