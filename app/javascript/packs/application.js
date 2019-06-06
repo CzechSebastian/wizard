@@ -30,7 +30,7 @@ categoryChoices.forEach((category) => {
         }else if (count === 2) {
           categoryMessage.innerHTML = "You have 1 more criteria left"
         }else if (count === 3) {
-          categoryMessage.innerHTML = "We've summed up the best districts for you!"
+          categoryMessage.innerHTML = "We've summed up the best districts!"
         }
       }, 50)
     } else {

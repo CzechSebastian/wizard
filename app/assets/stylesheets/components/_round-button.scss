@@ -17,8 +17,8 @@
 .category-choice {
   background: #b6bab8;
   padding: 20px;
-  width: 110px;
-  height:110px;
+  width: 140px;
+  height:140px;
   border-radius: 50%;
   text-align: center;
   transition: 0.2s;
@@ -27,9 +27,9 @@
   svg {
     fill: white
   }
-  &:hover {
-    filter: brightness(80%);
-  }
+  // &:hover {
+  //   filter: brightness(80%);
+  // }
   &.active {
     opacity:1;
     background-color: #8cf7a2;
@@ -43,13 +43,21 @@
   margin: 0 20px;
 }
 
-.margin-bt-small{
-    margin: 10px 0;
+.margin-bt-small {
+  margin: 16px 0 0 0;
 }
+
 
 @media(max-width: 1200px){
   .category-choices {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 760px){
+  .category-choice {
+    width: 100px;
+    height:100px;
   }
 }
 
@@ -59,6 +67,46 @@
   }
   .selection{
     margin: 0;
+  }
+}
+
+.margin-bt-small {
+  position: relative;
+  .category-choice{
+    //height: 100%;
+    //transform: translateX(-4rem) scale(1.4);
+    //backface-visibility: hidden;
+    transition: all .5s;
+
+  }
+  .criteria-text{
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    text-align: center;
+    opacity: 0;
+    transition: all .5s;
+    backface-visibility: hidden;
+    padding: 0;
+    margin: 0;
+  }
+  &:hover .category-choice{
+    //filter: blur(3px) brightness(80%);
+    background-color: #8CF6A2;
+    backface-visibility: hidden;
+    svg{
+      opacity: 0;
+      transition: all .5s;
+    }
+  }
+  &:hover .criteria-text{
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    color: #686868;
   }
 }
 
