@@ -13,55 +13,6 @@ $med-orange: #F4945B;
   }
 }
 
-.card-trip {
-  background-color: #3EF49E;
-  border-radius: 12px;
-  margin: 16px;
-  overflow: hidden;
-  box-shadow: 0 0 6px rgba(0,0,0,0.2);
-  height: 100px;
-  width:120px;
-  transition: 0.2s;
-    &:hover {
-    transform: scale(0.95);
-  }
-}
-
-.card-trip > img {
-  height: 20px;
-  width: 20%;
-  object-fit: cover;
-}
-
-.card-trip h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-trip p {
-  text-align:center;
-  font-size: 15px;
-  margin: 0;
-  color: white;
-  font-weight: bold;
-}
-
-.card-trip .card-trip-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
-}
-
-.card-trip-infos .card-trip-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
-}
-
 .score {
   height:40px;
   width: 40px;
@@ -112,7 +63,9 @@ $med-orange: #F4945B;
 .card-product h2 {
   font-size: 16px;
   font-weight: bold;
-  margin-top: 20px;
+  margin: 22px 0 0 0;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .card-product p {
@@ -133,3 +86,6 @@ $med-orange: #F4945B;
   right: 30px;
   bottom: 16px;
 }
+
+
+

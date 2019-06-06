@@ -57,8 +57,7 @@ const initIndexMap = () => {
               'data': {
                 'type': 'Feature',
                 'properties': {
-                  "name": polygon["name"],
-                  "description": "<strong>Make it Mount Pleasant</strong><p>Make it Mount Pleasant is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>"
+                  "name": polygon["name"]
                 },
                 'geometry': {
                   'type': 'Polygon',
@@ -70,9 +69,10 @@ const initIndexMap = () => {
             'paint': {
               'fill-color': 'red',
               'fill-opacity': 0.4,
-              'fill-outline-color': 'black'
+              'fill-outline-color': 'white'
             }
           })
+
           map.on('click', `montreal_${index}`, function (e) {
             console.log(e)
             new mapboxgl.Popup()
