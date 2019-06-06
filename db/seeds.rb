@@ -578,6 +578,13 @@ end
 
 "=============================================================================================================================================================================================================================="
 
+mileend = District.find_by(name:"Mile End")
+mileend.update!(rent_rate: 990, age: 31)
+
+petitebourgogne = District.find_by(name:"Petite-Bourgogne")
+petitebourgogne.update!(language: "English", age: 34, rent_rate: 1120)
+
+
 District.all.each do |district|
   # set_restaurants_score(district)
   # set_schools_score(district)
@@ -586,8 +593,7 @@ District.all.each do |district|
   # set_bikes_score(district)
   # set_parkings_score(district)
   # set_quiet_score(district)
-  set_dog_score(district)
-
+  # set_dog_score(district)
   # set_bars_score(district)
   # set_cafes_score(district)
   # set_gyms_score(district)
