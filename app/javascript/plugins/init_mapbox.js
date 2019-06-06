@@ -69,7 +69,7 @@ const initIndexMap = () => {
             'paint': {
               'fill-color': 'red',
               'fill-opacity': 0.4,
-              'fill-outline-color': 'white'
+              'fill-outline-color': 'black'
             }
           })
 
