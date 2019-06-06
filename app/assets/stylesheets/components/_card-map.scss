@@ -1,0 +1,55 @@
+.card-map {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  width:230px;
+  margin-top: 32px;
+  height: 275px;
+  border-radius: 16px;
+  position: relative;
+}
+
+.image-map  {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-map h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+  text-shadow: 0 0 3px rgba(0,0,0,0.6);
+}
+
+.card-map p {
+  font-size: 18px;
+
+  margin: 0;
+  color: white;
+  text-shadow: 0 0 3px rgba(0,0,0,0.6);
+}
+
+
+.card-map .card-map-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-sart;
+  flex-direction: column;
+  position: absolute;
+  top: -6px;
+  text-align: left;
+}
+
+
+.info {
+  text-align: left;
+}
+
+
+.card-map:hover .container-flag {
+  opacity: 1;
+  transition: 0.3s;
+}
