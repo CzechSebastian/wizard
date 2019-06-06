@@ -77,7 +77,7 @@ const initIndexMap = () => {
             console.log(e)
             new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML('<a href="' + polygon['url'] + '">' + e.features[0].properties.name + '</a>')
+            .setHTML('<a base-href="' + polygon['url'] + '" href="' + polygon['url'] + '" class="popup-link">' + e.features[0].properties.name + '</a>')
             .addTo(map);
           })
         });

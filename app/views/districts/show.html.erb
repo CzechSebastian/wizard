@@ -11,7 +11,6 @@
 		<button type="button" data-value="bixis" id="bixi-btn" class="btn-show-category"><i class="fas fa-bicycle"></i></button>
 		<button type="button" data-value="gyms" id="gym-btn" class="btn-show-category"><i class="fas fa-dumbbell"></i></button>
 		<button type="button" data-value="coffees" id="coffee-btn" class="btn-show-category"><i class="fas fa-coffee"></i></button>
-		<!-- <button type="button" data-value="schools" class="btn-show-category"><p>HOUSES FOR SELL</p></button> -->
 	</div>
 
 	<div class="w-100 position-relative">
@@ -47,6 +46,22 @@
 		</div>
 	</div>
 </div>
+
+
+<p>Other districts you may like...</p>
+
+<% unless cookies[:top_districts].nil? %>
+	<% districts = JSON.parse(cookies[:top_districts]).map { |id| District.find(id) } %>
+	<% districts.each do |district| %>
+		<div class="card-map">
+			<img class="image-map" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-73.572832,45.485027,13,-56,0/600x600?access_token=pk.eyJ1IjoiYmVuamFtaW5kb21pbmd1ZSIsImEiOiJjandmcTJrcHMweTIzNDNrZHdxMHppajh2In0._lnGrzv4VjfVS4ehUHj3Vw" alt="">
+			<div class="card-map-infos">
+				<p>Montréal</p>
+				<h2><%= district.name %></h2> 
+			</div>
+		</div>
+	<% end %>
+<% end %>
 
 <div class="colored-section" id="testimonials">
 
@@ -100,8 +115,6 @@
   </div>
 </div>
     <%= render 'shared/footer' %>
-
-
 
 
 
