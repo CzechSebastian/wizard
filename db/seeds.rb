@@ -1,38 +1,38 @@
 require "json"
 require 'csv'
 
-# puts 'Cleaning database...'
-# District.destroy_all
-# puts 'Creating districts seed...'
+puts 'Cleaning database...'
+District.destroy_all
+puts 'Creating districts seed...'
 
-# file = File.read('quartierreferencehabitation.geojson')
+file = File.read('quartierreferencehabitation.geojson')
 
-# districts = JSON.parse(file)
+districts = JSON.parse(file)
 
-# districts["features"].each do |district|
+districts["features"].each do |district|
 
-# 	name = district["properties"]["nom_qr"]
-# 	coordinates = district["geometry"]["coordinates"][0][0]
+	name = district["properties"]["nom_qr"]
+	coordinates = district["geometry"]["coordinates"][0][0]
 
-# 	location_latitude = coordinates.map do |coordinate|
-# 		coordinate.last
-# 	end
+	location_latitude = coordinates.map do |coordinate|
+		coordinate.last
+	end
 
-# 	location_longitude = coordinates.map do |coordinate|
-# 		coordinate.first
-# 	end
+	location_longitude = coordinates.map do |coordinate|
+		coordinate.first
+	end
 
-# 	middle_long = (location_longitude.min + location_longitude.max) / 2
-# 	middle_lat = (location_latitude.min + location_latitude.max) / 2
+	middle_long = (location_longitude.min + location_longitude.max) / 2
+	middle_lat = (location_latitude.min + location_latitude.max) / 2
 
-# 	location = [middle_long, middle_lat]
-# 	# if district["center"] != nil
-# 		District.create!(name:name, coordinates:coordinates, location:location)
-# 	# else
-# 	# 	District.create!(name:name, coordinates:coordinates, location:district["center"])
-# 	# end
+	location = [middle_long, middle_lat]
+	# if district["center"] != nil
+		District.create!(name:name, coordinates:coordinates, location:location)
+	# else
+	# 	District.create!(name:name, coordinates:coordinates, location:district["center"])
+	# end
 
-# end
+end
 
 # THIS IS THE CODE FOR RESTAURANT SCORE
 
@@ -264,7 +264,7 @@ def set_bikes_score(district)
   bixis = []
 
   csv_options = { col_sep: ',', headers: :first_row }
-  filepath    = 'stations_2019.csv'
+  filepath    = 'Stations_2019.csv'
 
   CSV.foreach(filepath, csv_options) do |row|
     bixis << row
@@ -586,15 +586,15 @@ petitebourgogne.update!(language: "English", age: 34, rent_rate: 1120)
 
 
 District.all.each do |district|
-  # set_restaurants_score(district)
-  # set_schools_score(district)
-  # set_subways_score(district)
-  # set_parks_score(district)
-  # set_bikes_score(district)
-  # set_parkings_score(district)
-  # set_quiet_score(district)
-  # set_dog_score(district)
-  # set_bars_score(district)
-  # set_cafes_score(district)
-  # set_gyms_score(district)
+  set_restaurants_score(district)
+  set_schools_score(district)
+  set_subways_score(district)
+  set_parks_score(district)
+  set_bikes_score(district)
+  set_parkings_score(district)
+  set_quiet_score(district)
+  set_dog_score(district)
+  set_bars_score(district)
+  set_cafes_score(district)
+  set_gyms_score(district)
 end
