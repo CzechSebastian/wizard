@@ -69,8 +69,11 @@ class MapsController < ApplicationController
       end
     end
 
+
     @districts = @districts.sort_by { |district| district.average }
     @districts = @districts.last(10)
+    cookies[:top_districts] = @districts.last(3).pluck(:id).to_json
+
     @districts = [] if params[:criteria].count <= 1
 
     respond_to do |format|
