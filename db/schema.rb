@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_07_125303) do
+ActiveRecord::Schema.define(version: 2019_06_07_142308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_125303) do
     t.integer "rent_rate", default: 900
     t.string "home", default: "This neighbourhood has an energetic atmosphere and also a concentration of bars, restaurants, theatres and other hangouts. It may be more active in the week hours of the night than by day."
     t.string "review", default: "Little known to tourists, this area is really nice. So many activities for the family, very good restaurants and local food stands!"
+    t.string "photo"
   end
 
   create_table "users", force: :cascade do |t|
