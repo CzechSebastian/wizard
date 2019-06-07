@@ -1,5 +1,8 @@
 #background {
   position: absolute;
+  bottom: 0px;
+  right: 0px;
+
 }
 
 .top-container {
@@ -41,7 +44,7 @@ width: 10em;
   position: relative;
   top: 33px;
   font-size: 5em;
-  color:#40c788;
+  color: $primary-color;
   font-family: 'Nunito', sans-serif;
 }
 
@@ -50,6 +53,7 @@ width: 10em;
   text-align: center;
   margin-top: 24px;
   color: #4F4F4F;
+  line-height: 1.625;
 }
 
 .logo-position {
