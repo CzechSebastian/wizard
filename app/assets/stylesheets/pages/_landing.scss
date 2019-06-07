@@ -15,9 +15,7 @@
   background-attachment: fixed;
 }
 .middle {
-  display:flex;
-  position: relative;
-  bottom: 10%;
+  padding: 128px 0 0 128px;
 }
 
 #wave {
@@ -43,7 +41,7 @@ width: 10em;
 .text-logo {
   position: relative;
   top: 33px;
-  font-size: 5em;
+  font-size: 8em;
   color: $primary-color;
   font-family: 'Nunito', sans-serif;
 }
@@ -61,15 +59,15 @@ width: 10em;
 }
 
 .btn-search {
-  position: relative;
-  bottom: 250px;
-  text-align: center;
+  margin-left: 62px;
+  position: absolute;
 }
+
 .btn-success {
-  border-radius: 5px;
+  border-radius: 4px;
   color: white;
   background-color: #3EF49E;
-  width: 450px;
+  width: 300px;
   font-size: 2em;
   font-family: helvetica;
 }
