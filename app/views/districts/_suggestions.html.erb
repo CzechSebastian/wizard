@@ -10,7 +10,6 @@
           <div class="card-product" data-district-location="<%= district.location %>">
             <div class="card-product-infos">
               <h2><%= district[:name] %></h2>
-              <p>a trendy neighbourhood this is a place to live. known for dogs, food and buses</p>
               <div class="scoreofcriterias">
                 <p class="score score-<%= district.get_color_score("restaurant_score") %> restaurant"><%= inline_svg "restaurant.svg", class: 'logo-icon' %></p>
                 <p class="score score-<%= district.get_color_score("school_score") %> school"><%= inline_svg "school.svg", class: 'logo-icon' %></p>

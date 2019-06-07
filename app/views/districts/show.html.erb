@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-lg-5 tab-side">
 <div class="d-flex justify-content-center title-show">
-	<h1 class="title-show"><strong><%= @district.name %></strong></h1>
+  <h1><strong><%= link_to  @district.name , districts_path, class: "title-show" %></strong></h1>
+
 </div>
 <!-- ========================================================== Tab section-->
 <!-- <div>

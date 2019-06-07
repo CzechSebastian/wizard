@@ -47,8 +47,14 @@
 
 .title-show {
 font-family: roboto;
+text-decoration: none;
+color: #4F4F4F;
 }
 
+.title-show:hover{
+  text-decoration: none;
+  color: #4F4F4F;
+}
 .text-center {
   font-family: roboto;
 }
