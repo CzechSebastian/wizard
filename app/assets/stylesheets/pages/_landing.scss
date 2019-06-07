@@ -15,7 +15,9 @@
   background-attachment: fixed;
 }
 .middle {
-  padding: 128px 0 0 128px;
+  position: absolute;
+  bottom: 10%;
+  left: 4%;
 }
 
 #wave {
@@ -54,14 +56,7 @@ width: 10em;
   line-height: 1.625;
 }
 
-.logo-position {
-  padding: 190px 0 32px 16px;
-}
 
-.btn-search {
-  margin-left: 62px;
-  position: absolute;
-}
 
 .btn-success {
   border-radius: 4px;
