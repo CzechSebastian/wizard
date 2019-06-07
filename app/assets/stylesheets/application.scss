@@ -18,3 +18,22 @@
 
 
 
+
+.popup-link {
+  color: black;
+  font-weight: bold;
+  &:hover {
+    text-decoration: none;
+    color: black;
+  }
+
+  span {
+    padding-right: 9px;
+    padding-left: 9px;
+    padding-top: 9px;
+  }
+}
+
+.mapboxgl-popup-content {
+  padding-bottom: 8px !important;
+}

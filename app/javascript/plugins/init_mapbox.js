@@ -100,7 +100,7 @@ const initIndexMap = () => {
             console.log(e)
             new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML('<a base-href="' + polygon['url'] + '" href="' + polygon['url'] + '" class="popup-link">' + e.features[0].properties.name + '</a>')
+            .setHTML('<a style="" base-href="' + polygon['url'] + '" href="' + polygon['url'] + '" class="popup-link"><span>' + e.features[0].properties.name + '</span></a>')
             // .setHTML(polygon['popup'])
             .addTo(map);
           })
