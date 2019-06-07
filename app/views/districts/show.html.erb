@@ -39,7 +39,7 @@
   <div class="tab-pane fade" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
     <%= render 'suggestions'  %>
   </div>
-</div> master
+</div>
 
 
 </div>
@@ -103,21 +103,7 @@
 
 <<<<<<< HEAD
 =======
-<!-- //======================================================================== Recomendations
---><h3 class="subtitle-text" >Other districts you may like...</h3>
-<div class="recomendation">
-  <% unless session[:top_districts].nil? %>
-  <% districts = session[:top_districts].map { |id| District.find(id) } %>
-  <% districts.each do |district| %>
-  <div class="card-map">
-   <img class="image-map" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-73.572832,45.485027,13,-56,0/600x600?access_token=pk.eyJ1IjoiYmVuamFtaW5kb21pbmd1ZSIsImEiOiJjandmcTJrcHMweTIzNDNrZHdxMHppajh2In0._lnGrzv4VjfVS4ehUHj3Vw" alt="">
-   <div class="card-map-infos">
-    <p>Montréal</p>
-    <h2><%= district.name %></h2>
-
-  </div>
->>>>>>> f5291ea5ccb1deb6bf6fe715688fc08d7d4f4c9d
-
+<!--  -->
 
 <%= render 'shared/footer' %>
 
