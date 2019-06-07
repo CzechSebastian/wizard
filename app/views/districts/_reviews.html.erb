@@ -1,29 +1,27 @@
 <!-- ================================================================================  Review section
 -->
+<% user_imgs = ["martin.jpg", "seb.jpg", "stephane.jpeg", "steph.jpg" ] %>
+<% user_imgs = user_imgs.shuffle %>
+
 <div id="testimonial-carousel" class="carousel-slide" data-ride="false">
 
   <div class="text-center title-review">
     <h2>Neighbourhood's reviews</h2>
   </div>
   <div class="carousel-inner">
-
     <div class="carousel-item active container-fluid">
-
       <div class="review-cards">
 
-        <div class="review-card">
-          <div class="reviewers-photos">
-            <%= image_tag "martin.jpg", class:"image-review"  %>
+        <% @district.review.split("@@").shuffle.each_with_index do |review, index| %>
+          <div class="review-card">
+            <div class="reviewers-photos">
+              <%= image_tag user_imgs[index], class:"image-review"  %>
+            </div>
+            <h2 class="testimonial-text"><%= review %></h2>
           </div>
-          <h2 class="testimonial-text">I love the proximity with everything, it is my favorite neighbourhood in Montreal. It's warm atmosphere makes you feel good.</h2>
-        </div>
+        <% end %>
 
-        <div class="review-card">
-          <div class="reviewers-photos">
-            <%= image_tag "seb.jpg", class:"image-review" %>
-          </div>
-          <h2 class="testimonial-text">Little known to tourists, this area is really nice.So many activities for the family ,very good restaurants,local food stands</h2>
-        </div>
+
       </div>
 
     </div>

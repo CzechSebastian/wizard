@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_163422) do
+ActiveRecord::Schema.define(version: 2019_06_07_125303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,10 +44,12 @@ ActiveRecord::Schema.define(version: 2019_06_06_163422) do
     t.jsonb "cafe_raw", default: []
     t.float "gym_score", default: 0.0
     t.jsonb "gym_raw", default: []
-    t.string "language", default: "French"
-    t.string "crime_rate", default: "Low"
+    t.string "language", default: "french"
+    t.string "crime_rate", default: "low"
     t.integer "age", default: 30
     t.integer "rent_rate", default: 900
+    t.string "home", default: "This neighbourhood has an energetic atmosphere and also a concentration of bars, restaurants, theatres and other hangouts. It may be more active in the week hours of the night than by day."
+    t.string "review", default: "Little known to tourists, this area is really nice. So many activities for the family, very good restaurants and local food stands!"
   end
 
   create_table "users", force: :cascade do |t|

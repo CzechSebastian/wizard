@@ -1,38 +1,38 @@
 require "json"
 require 'csv'
 
-puts 'Cleaning database...'
-District.destroy_all
-puts 'Creating districts seed...'
+# puts 'Cleaning database...'
+# District.destroy_all
+# puts 'Creating districts seed...'
 
-file = File.read('quartierreferencehabitation.geojson')
+# file = File.read('quartierreferencehabitation.geojson')
 
-districts = JSON.parse(file)
+# districts = JSON.parse(file)
 
-districts["features"].each do |district|
+# districts["features"].each do |district|
 
-	name = district["properties"]["nom_qr"]
-	coordinates = district["geometry"]["coordinates"][0][0]
+# 	name = district["properties"]["nom_qr"]
+# 	coordinates = district["geometry"]["coordinates"][0][0]
 
-	location_latitude = coordinates.map do |coordinate|
-		coordinate.last
-	end
+# 	location_latitude = coordinates.map do |coordinate|
+# 		coordinate.last
+# 	end
 
-	location_longitude = coordinates.map do |coordinate|
-		coordinate.first
-	end
+# 	location_longitude = coordinates.map do |coordinate|
+# 		coordinate.first
+# 	end
 
-	middle_long = (location_longitude.min + location_longitude.max) / 2
-	middle_lat = (location_latitude.min + location_latitude.max) / 2
+# 	middle_long = (location_longitude.min + location_longitude.max) / 2
+# 	middle_lat = (location_latitude.min + location_latitude.max) / 2
 
-	location = [middle_long, middle_lat]
-	# if district["center"] != nil
-		District.create!(name:name, coordinates:coordinates, location:location)
-	# else
-	# 	District.create!(name:name, coordinates:coordinates, location:district["center"])
-	# end
+# 	location = [middle_long, middle_lat]
+# 	# if district["center"] != nil
+# 		District.create!(name:name, coordinates:coordinates, location:location)
+# 	# else
+# 	# 	District.create!(name:name, coordinates:coordinates, location:district["center"])
+# 	# end
 
-end
+# end
 
 # THIS IS THE CODE FOR RESTAURANT SCORE
 
@@ -579,10 +579,10 @@ end
 "=============================================================================================================================================================================================================================="
 
 mileend = District.find_by(name:"Mile End")
-mileend.update!(rent_rate: 990, age: 31)
+mileend.update!(rent_rate: 990, age: 31, review: "Little known to tourists, this area is really nice. So many activities for the family, very good restaurants and local food stands!@@It’s no surprise the Mile End is included in many of the world’s coolest neighborhoods in the world. With some of the best cafes, restaurants, bars and local independent shops.", home:"Mile End used to be known as just the northwestern corner of the Plateau, but now it is recognized as a separate neighbourhood. This is an ethnically and linguistically diverse district where you’ll hear a combination of English, French, Italian, Portuguese and other languages. Like the Plateau, Mile End also has an artistic vibe, which has given rise to such musicians as Arcade Fire, Grimes, Plants and Animals and more.")
 
 petitebourgogne = District.find_by(name:"Petite-Bourgogne")
-petitebourgogne.update!(language: "English", age: 34, rent_rate: 1120)
+petitebourgogne.update!(language: "English", age: 34, rent_rate: 1120, review: "I really love this neighbourhood. There are so much restaurants and bars. I leave near the Atwater Market, it is a really vibrant neighbourhood.@@It’s beautiful, and also has one of the most nicest bike paths in the city which can get you all the way to old Montreal. it’s full of pretty cool people, including tons of musicians, artists, students and young professionals.", home:"The Atwater Market is located at the southwestern corner of the neighbourhood. Little Burgundy is home to the North American arm of Ninja Tune records, many architecture and design offices, new restaurants, as well a longstanding antiques row along Notre-Dame West, formally organized as the 'Quartier des Antiquaires'.")
 
 #description of district
 #Le plateau :Originally a working-class francophone area, the Plateau has since evolved into a trendy and artistic neighbourhood that is becoming increasingly gentrified. Still maintaining its bohemian reputation, the Plateau has a youthful vibe and offers a variety of restaurants, cafes, bars, bakeries and trendy shops that have earned its reputation as the hippest area of Montreal.
@@ -590,18 +590,18 @@ petitebourgogne.update!(language: "English", age: 34, rent_rate: 1120)
 #Hochelaga : Situated south and southwest of Montreal’s Olympic Stadium, the Hochelaga neighbourhood is one of the city’s few districts named for the original First Nations residents. Hochelega was the name of an Iroquoian village visited by French explorer Jacques Cartier in the 1530s, during his first trip along the St. Lawrence River. Nowadays, the population in this up-and-coming neighbourhood is a blend of working class francophones, students and recent immigrants. A notable feature of Hochelaga is Marché Maisonneuve, a public market housed within an early 20th-century stone pavilion.
 #Rosemont : After Toronto, Montreal has the second-largest Italian population in Canada, and this long history of immigration has created a dynamic community just north of the Plateau. In this neighbourhood you’ll find a variety of Italian Canadian-owned shops and restaurants, in addition to the dynamic, world-class Jean-Talon Market, one of the oldest public markets in Montreal.
 #Vieux-montreal : Vieux Montreal, or Old Montreal, is the most touristic neighbourhood of the city, and it is also the oldest. In this historic district, explore eclectic shops and galleries along narrow, cobble-stoned roadways and marvel at the old, beautiful architecture that dates back to the 17th century.
-#Quartier Latien : West of the Village you can find the Quartier Latin, a small area next to the Université du Québec à Montréal (UQAM) campus. This neighbourhood has an energetic atmosphere and houses a concentration of bars, restaurants, theatres and other hangouts. It may be more active in the wee hours of the night than by day. In contrast, the Quartier Latin is also home to the impressive Grande Bibliothèque du Quebec.
+#Quartier Latien : West of the Village you can find the Quartier Latin, a small area next to the Université du Québec à Montréal (UQAM) campus. This neighbourhood has an energetic atmosphere and houses a concentration of bars, restaurants, theatres and other hangouts. It may be more active in the week hours of the night than by day. In contrast, the Quartier Latin is also home to the impressive Grande Bibliothèque du Quebec.
 
 District.all.each do |district|
-  set_restaurants_score(district)
-  set_schools_score(district)
-  set_subways_score(district)
-  set_parks_score(district)
-  set_bikes_score(district)
-  set_parkings_score(district)
-  set_quiet_score(district)
-  set_dog_score(district)
-  set_bars_score(district)
-  set_cafes_score(district)
-  set_gyms_score(district)
+  # set_restaurants_score(district)
+  # set_schools_score(district)
+  # set_subways_score(district)
+  # set_parks_score(district)
+  # set_bikes_score(district)
+  # set_parkings_score(district)
+  # set_quiet_score(district)
+  # set_dog_score(district)
+  # set_bars_score(district)
+  # set_cafes_score(district)
+  # set_gyms_score(district)
 end
