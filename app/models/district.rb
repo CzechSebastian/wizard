@@ -25,6 +25,8 @@ def set_score(score_type)
 end
 
 def get_color_score(score_type)
+  score = 5
+
   if score_type == "park_score"
     score = self.park_score
   elsif score_type == "school_score"
