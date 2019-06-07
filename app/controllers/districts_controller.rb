@@ -109,7 +109,15 @@ class DistrictsController < ApplicationController
       end
     end
 
-end
+    @reviews = [
+      { name: "Martin", image: "martin.jpg" },
+      { name: "Sebastian", image: "seb.jpg" },
+      { name: "Stephane", image: "stephane.jpeg" },
+      { name: "Stephanie", image: "steph.jpg" }
+    ].sample(2)
+  end
+
+
   def new
   end
 end

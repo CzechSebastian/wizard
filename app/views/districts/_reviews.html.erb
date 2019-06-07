@@ -1,7 +1,5 @@
 <!-- ================================================================================  Review section
 -->
-<% user_imgs = ["martin.jpg", "seb.jpg", "stephane.jpeg", "steph.jpg" ] %>
-<% user_imgs = user_imgs.shuffle %>
 
 <div id="testimonial-carousel" class="carousel-slide" data-ride="false">
 
@@ -14,10 +12,13 @@
 
         <% @district.review.split("@@").shuffle.each_with_index do |review, index| %>
           <div class="review-card">
-            <div class="reviewers-photos">
-              <%= image_tag user_imgs[index], class:"image-review"  %>
+            <div class="d-flex">
+              <div class="reviewers-photos">
+                <%= image_tag @reviews[index][:image], class:"image-review"  %>
+              </div>
+              <h4><%= @reviews[index][:name] %></h4>
             </div>
-            <h2 class="testimonial-text"><%= review %></h2>
+            <p class="testimonial-text"><%= review %></p>
           </div>
         <% end %>
 
