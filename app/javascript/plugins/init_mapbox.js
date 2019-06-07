@@ -228,6 +228,7 @@ document.querySelectorAll(".btn-show-category").forEach((element) => {
     deleteAllMarkers();
     console.log(filters)
     triggerMapRefresh()
+    element.classList.toggle("active");
   })
 });
 

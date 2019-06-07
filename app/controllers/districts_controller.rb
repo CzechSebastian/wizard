@@ -8,7 +8,9 @@ class DistrictsController < ApplicationController
     @district = District.find(params[:id])
     session[:top_districts] = session[:top_districts].reject { |id| id.to_i == params[:id].to_i }.reverse.first(3)
 
-
+    if session[:top_districts].length == 2 && params[:original_suggestion].present?
+      session[:top_districts].push(params[:original_suggestion])
+    end
 
   	if @district.raw_restaurant == nil
   		 @restaurant_coordinates = []

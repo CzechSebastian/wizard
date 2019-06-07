@@ -1,6 +1,6 @@
     <div class="container map-display">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-xl-8 col-lg-6">
           <div
           class="map"
           id="map"
@@ -9,7 +9,7 @@
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
           ></div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-xl-4 col-lg-6 right-column">
           <div id="districts-card" style="display: none;">
           </div>
           <h2 class="criteria-title">select your 3 main criterias</h2>
@@ -28,7 +28,7 @@
                 <input type="checkbox" name="criteria[]" class="hidden" value="restaurant" id="post_category_ids_icon_restaurant">
                 <label class="category-choice" for="post_category_ids_icon_restaurant">
                   <%= inline_svg "restaurant.svg", class: 'logo-icon' %>
-                  <p class="criteria-text" >Restaurants</p>
+                  <p class="criteria-text" >Restos</p>
                 </label>
 
               </div>
