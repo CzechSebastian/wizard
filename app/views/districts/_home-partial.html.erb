@@ -1,13 +1,13 @@
 <p><%= @district.home %></p>
 
 
-<p class="language-text" ><strong>Language: </strong></p>
-  <%= image_tag "french.jpg", class:"language"  %>
+<p class="language-text" ><strong>Language: </strong><%= @district.language  %></p>
+
 
 
 <p> <strong>Median age:</strong></p>
 <div class="progress" style="height: 40px;">
-  <div class="progress-bar age_value" role="progressbar" style="width: 37%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">37 years old</div>
+  <div class="progress-bar age_value" role="progressbar" style="width: 37%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= @district.age %>years old</div>
 </div>
 
 <p> <strong>Crime rate:</strong></p>
