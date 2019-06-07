@@ -5,7 +5,12 @@
 
 .tab-side {
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100vh;
 }
+
+.tab-side::-webkit-scrollbar { width: 0 !important }
 
 .map-side {
   padding: 0;
@@ -22,14 +27,12 @@
   }
 }
 
-// .image-section {
-//   width: 150px;
-//   height: 150px;
-//   object-fit: cover;
+.tabs {
+    height: 8vh;
+}
 
-// }
+.image-section {
+  width: 100%;
+  padding: 20px;
+}
 
-// .image{
-//   display: flex;
-//   justify-content: space-around;
-// }
