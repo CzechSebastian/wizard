@@ -31,8 +31,10 @@
 
 .image-review {
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
+  box-shadow: #0000000f 1px 1px 6px;
+  margin-right: 20px;
 }
 
 .reviewers-photos {
@@ -52,6 +54,10 @@
   margin-bottom: 32px;
   border: 2px solid #3EF49E;
   width: 100%;
+
+  h4 {
+    color: #4a4444;
+  }
 }
 
 .testimonial-text {
