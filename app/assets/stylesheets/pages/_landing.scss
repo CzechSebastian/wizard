@@ -1,5 +1,8 @@
 #background {
   position: absolute;
+  bottom: 0px;
+  right: 0px;
+
 }
 
 .top-container {
@@ -40,8 +43,9 @@ width: 10em;
 .text-logo {
   position: relative;
   top: 33px;
-  font-size: 7em;
-  color:#4F4F4F;
+  font-size: 5em;
+  color: $primary-color;
+  font-family: 'Nunito', sans-serif;
 }
 
 .subtitle-logo {
@@ -49,18 +53,11 @@ width: 10em;
   text-align: center;
   margin-top: 24px;
   color: #4F4F4F;
+  line-height: 1.625;
 }
 
 .logo-position {
   padding: 120px 0 32px 32px;
-}
-
-#image-logo {
-  background-color: #E5E5E5;
-  position:relative;
-  height:600px;
-  width: 600px;
-  left: -50px;
 }
 
 .btn-search {
