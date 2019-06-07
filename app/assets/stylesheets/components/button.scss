@@ -34,7 +34,8 @@
   &:hover {
     background-color: #8cf7a2;
   }
-  &:active {
+
+  &.active {
     opacity:1;
     background-color: #8cf7a2;
     svg {

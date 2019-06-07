@@ -4,7 +4,6 @@ $orange: #F84700;
 $med-orange: #F4945B;
 
 #districts-card{
-  height:34vh;
   overflow:scroll;
   overflow-y:hidden;
   overflow-x:hidden;
@@ -40,8 +39,48 @@ $med-orange: #F4945B;
   background-color: $orange;
   }
 
+.recomendation {
+  .card-product {
+    height: initial;
+
+    p {
+      font-size: 17px;
+      font-weight: 100;
+      color: #373737;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .score {
+    margin-bottom: 0px;
+  }
+
+  .card-product-infos h2 {
+    font-size: 21px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+
+  .scoreofcriterias {
+    bottom: 13px;
+  }
+}
+
+#districts-card {
+  .card-product-infos p:nth-child(2) {
+    display: none;
+  }
+
+  .scoreofcriterias {
+    bottom: 4px;
+  }
+}
+
 .card-product {
-  height: 10vh;
+  height: 90px;
   background: white;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
   display: flex;
@@ -84,7 +123,6 @@ $med-orange: #F4945B;
   width: 350px;
   position: relative;
   right: 30px;
-  bottom: 16px;
 }
 
 
