@@ -150,7 +150,7 @@ const initShowMap = () => {
       container: 'show-map',
       style: 'mapbox://styles/mapbox/streets-v10',
       center: center,
-      zoom: 13,
+      zoom: 14,
       attributionControl: false,
       bearing: -56
     });

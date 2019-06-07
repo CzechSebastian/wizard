@@ -3,7 +3,9 @@
 }
 
 .testimonial-text{
+  font-family: roboto;
   font-size: 18px;
+  color: #4F4F4F;
   line-height: 1.5;
 }
 
@@ -13,6 +15,10 @@
   margin: 20px;
 }
 
+.title-review > h2{
+  font-family: roboto;
+  color: #4F4F4F;
+}
 #press{
   background-color: #ef8172;
   padding-bottom: 3%;
@@ -33,10 +39,6 @@
   margin-bottom:16px;
 }
 
-.carousel-inner {
-  margin: auto;
-  width: 75%;
-}
 
 .review-cards {
   padding-top: 16px;
