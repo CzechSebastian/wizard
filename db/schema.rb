@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2019_06_07_125303) do
     t.jsonb "cafe_raw", default: []
     t.float "gym_score", default: 0.0
     t.jsonb "gym_raw", default: []
-    t.string "language", default: "french"
-    t.string "crime_rate", default: "low"
+    t.string "language", default: "French"
+    t.string "crime_rate", default: "Low"
     t.integer "age", default: 30
     t.integer "rent_rate", default: 900
     t.string "home", default: "This neighbourhood has an energetic atmosphere and also a concentration of bars, restaurants, theatres and other hangouts. It may be more active in the week hours of the night than by day."
