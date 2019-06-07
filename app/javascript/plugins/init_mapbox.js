@@ -100,7 +100,7 @@ let map = null;
 const categoryClasses = {
   restaurants: '<div class="marker-item"><i class="fas fa-utensils"></i></div>',
   schools: '<div class="marker-item"><i class="fas fa-graduation-cap""></i></div>',
-  bars: '<div class="marker-item"><i class="fas fa-glass-martini-alt"></i></div>',
+  bars: '<div class="marker-item"><i class="fas fa-beer"></i></div>',
   subways: '<div class="marker-item"><i class="fas fa-subway"></i></div>',
   parks: '<div class="marker-item"><i class="fas fa-leaf"></i></div>',
   bixis: '<div class="marker-item"><i class="fas fa-bicycle"></i></div>',

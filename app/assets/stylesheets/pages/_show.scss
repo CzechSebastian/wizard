@@ -23,7 +23,8 @@
 
 #home {
   p {
-    line-height: 2.1;
+    line-height: 2.5;
+    padding-top: 32px;
   }
 }
 
@@ -39,4 +40,31 @@
 .hashtag {
   margin-bottom: 0;
   font-size: 1.2em;
+}
+
+.rent_rate {
+  background-color: #B6E59E;
+}
+
+.age_value {
+  background-color: #FA7F5C;
+}
+
+.language {
+  height: 60px
+}
+
+.language-text {
+  margin: 0;
+  padding-top: 0;
+
+}
+
+.progress-bar {
+  font-size: 1.5em;
+}
+
+.progress {
+  border-radius: 6px;
+  width:600px;
 }
