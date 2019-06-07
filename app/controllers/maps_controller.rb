@@ -77,6 +77,9 @@ class MapsController < ApplicationController
     session[:top_districts] = @districts.pluck(:id)
     @districts = [] if params[:criteria].count <= 1
 
+    # @js_districts = @districts.map { |district| { coordinates: district.coordinates, name: district.name, url: "/districts/#{district.id}", popup: j(render_to_string(partial: "shared/infowindow_main", locals: { form_data: district } )) } }
+    @js_districts = @districts.map { |district| { coordinates: district.coordinates, name: district.name, url: "/districts/#{district.id}" } }
+    # binding.pry
     respond_to do |format|
       format.html { render 'districts/index' }
       format.js

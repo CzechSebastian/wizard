@@ -40,7 +40,7 @@ const initIndexMap = () => {
         // removing all montreal layers
 
         map.getStyle().layers.forEach((layer) => {
-          if (layer.id.match(/^montreal_/) !== null) {
+          if (layer.id.match(/montreal_/) !== null) {
             map.removeLayer(layer.id);
             map.removeSource(layer.id);
           }
@@ -68,8 +68,31 @@ const initIndexMap = () => {
             'layout': {},
             'paint': {
               'fill-color': 'red',
-              'fill-opacity': 0.4,
+              'fill-opacity': 0.2,
               'fill-outline-color': 'black'
+            }
+          })
+
+          map.addLayer({
+            'id': `line_montreal_${index}`, // dynamic name for each polygon (starts with "montreal_")
+            'type': 'line',
+            'source': {
+              'type': 'geojson',
+              'data': {
+                'type': 'Feature',
+                'properties': {
+                  "name": polygon["name"]
+                },
+                'geometry': {
+                  'type': 'Polygon',
+                  'coordinates': [polygon["coordinates"]]
+                }
+              }
+            },
+            'layout': {},
+            'paint': {
+              'line-color': '#FF6057',
+              'line-width': 4
             }
           })
 
@@ -78,6 +101,7 @@ const initIndexMap = () => {
             new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML('<a base-href="' + polygon['url'] + '" href="' + polygon['url'] + '" class="popup-link">' + e.features[0].properties.name + '</a>')
+            // .setHTML(polygon['popup'])
             .addTo(map);
           })
         });

@@ -10,7 +10,7 @@
     <div class="carousel-item active container-fluid">
       <div class="review-cards">
 
-        <% @district.review.split("@@").shuffle.each_with_index do |review, index| %>
+        <% @district.review.split("@@").each_with_index do |review, index| %>
           <div class="review-card">
             <div class="d-flex">
               <div class="reviewers-photos">
@@ -18,7 +18,7 @@
               </div>
               <h4><%= @reviews[index][:name] %></h4>
             </div>
-            <p class="testimonial-text"><%= review %></p>
+            <p class="testimonial-text"><%= review %></<p></p>
           </div>
         <% end %>
 

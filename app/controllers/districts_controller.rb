@@ -110,11 +110,11 @@ class DistrictsController < ApplicationController
     end
 
     @reviews = [
-      { name: "Martin", image: "martin.jpg" },
-      { name: "Sebastian", image: "seb.jpg" },
+      { name: "Simon", image: "simon.jpeg" },
+      { name: "Stephanie", image: "steph.jpg" },
       { name: "Stephane", image: "stephane.jpeg" },
-      { name: "Stephanie", image: "steph.jpg" }
-    ].sample(2)
+      { name: "Sebastian", image: "seb.jpg" }
+    ]
   end
 
 
